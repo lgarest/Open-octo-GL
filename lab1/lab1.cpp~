@@ -1,0 +1,38 @@
+#include <GL/gl.h>
+#include <GL/freeglut.h>
+#include <iostream>
+using namespace std;
+
+struct Coord{
+    int x;
+    int y;
+    int z;
+};
+
+Coord v1, v2, v3;
+bool tmode, fmode;
+tmode = fmode = false;
+double r,g,b,a;
+r = g = b = a = 0.0;
+
+void refresh(void) {
+	glClear(GL_COLOR_BUFFER_BIT);
+	glBegin(GL_TRIANGLES);
+	glVertex3f(v1.x, v1.y, v1.z);
+	glVertex3f(v2.x, v2.y, v2.z);
+	glVertex3f(v3.x, v3.y, v3.z);
+	glEnd();
+	glutSwapBuffers();
+}
+
+int main(int argc, char const *argv[]){
+  glutInit(&argc, (char **)argv);
+  glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
+  glutInitWindowSize (600, 600);
+  glutCreateWindow("IDI:_Lab_1");
+  //glClearColor(0.0,0.0,0.0,0.0);
+  glutDisplayFunc(refresh);
+  glutMainLoop();
+  return 0;
+}
+
