@@ -235,3 +235,20 @@ int main(int argc, char const *argv[]){
 //     glutMainLoop();
 //     return 0;
 // }
+
+
+/*  
+    TG transformacions geometriques (matrius)
+    creació
+    escalat
+    translació
+    
+    -modifiquen als vèrtexs
+
+    2 matrices de translación importantes: modelview y projection
+    opengl guarda las matrices en pilas de matrices:
+    modelview:
+        cada vez que se pintan los objetos se aplica a los vértices
+        en un principio es la matriz identidad.
+    projection:
+*/  
