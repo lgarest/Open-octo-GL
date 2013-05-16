@@ -17,12 +17,14 @@ using namespace std;
 // Viewer positioning angles.
 GLfloat viewerAzimuth = INITIAL_VIEWER_AZIMUTH;
 GLfloat viewerZenith  = INITIAL_VIEWER_ZENITH;
-GLfloat VRP[] = { 0.0, 0.0, 0.0 };
-GLfloat OBS[] = { 0.0, 0.0, 0.0 };
+GLfloat ViewerDistance = INITIAL_VIEWER_DISTANCE;
+GLfloat OBS[] = { 5.0, 5.0, 5.0 };
+GLfloat VRP[] = { 0.0,0.0,0.0 };
 GLfloat CR[] = { 0.0, 1.0, 0.020 };
+GLfloat paningplane[] = {0.0,0.0,0.0,0.0};
 
 // Constants to draw the axis lines.
-bool axis_bool = true, camera_mode = true;
+bool axis_bool = true, camera_mode = true, help_menu = true;
 float XO[3] = {-30,0,0}, YO[3] = {0,-30,0}, ZO[3] = {0,0,-30};
 float XP[3] = {30,0,0} , YP[3] = {0,30,0} , ZP[3] = {0,0,30};
 
@@ -37,7 +39,6 @@ GLfloat EarthDayIncrement    = 0.01;
 GLint WindowSize[2]   = { 750, 750 / ASPECT_RATIO };
 GLint ViewportSize[2] = { 750, 750 / ASPECT_RATIO };
 
-GLfloat ViewerDistance = INITIAL_VIEWER_DISTANCE;
 
 /***********************/
 /* Function prototypes */
@@ -46,8 +47,11 @@ void KeyboardPress(unsigned char pressedKey, int mouseX, int mouseY);
 void NonASCIIKeyboardPress(int pressedKey, int mouseX, int mouseY);
 void TimerFunction(int value);
 void Draw_Axis_Lines();
+void CameraPanPlane();
+void RotateCamera(float h, float v);
 void ConfigCamera();
 void Display();
+void HelpDisplay();
 void ResizeWindow(GLsizei w, GLsizei h);
 void drawEarthAndMoon();
 void drawSun();
@@ -62,10 +66,13 @@ void drawPlanet(GLfloat inclination, GLfloat orbitDuration, GLfloat orbitRadius,
 // environment to display the textured objects. //
 int main(int argc, char** argv) {
     glutInit (&argc, argv);
+    OBS[0] = VRP[0] + ViewerDistance * sin(viewerZenith) * sin(viewerAzimuth); 
+    OBS[1] = VRP[1] + ViewerDistance * cos(viewerZenith);
+    OBS[2] = VRP[2] + ViewerDistance * sin(viewerZenith) * cos(viewerAzimuth);
 
     // Set up the display window.
     glutInitDisplayMode( GLUT_DOUBLE | GLUT_RGBA | GLUT_STENCIL | GLUT_DEPTH );
-    glutInitWindowPosition( INIT_WINDOW_POSITION[0], INIT_WINDOW_POSITION[1] );
+    glutInitWindowPosition( INIT_WINDOW_POSITION[0]+400, INIT_WINDOW_POSITION[1]-50);
     glutInitWindowSize( WindowSize[0], WindowSize[1] );
     glutCreateWindow( "IDI: Solar System 2.0" );
 
@@ -92,13 +99,7 @@ void KeyboardPress(unsigned char pressedKey, int mouseX, int mouseY){
     char pressedChar = char(pressedKey);
     switch(pressedKey){
         case 'h':
-            cout << "'h' to show this menu." << endl;
-            cout << "'+' to speed up the system"<< endl;
-            cout << "'-' to slow down the system"<< endl;
-            cout << "'Z' to zoom in to the VRP"<< endl;
-            cout << "'z' to zoom out to the VRP"<< endl;
-            cout << "'c' un/display axis lines"<< endl;
-            cout << "'r' to reset the camera to default"<< endl << endl;
+            help_menu = true;
             break;
         case 'm':
             axis_bool = !axis_bool;
@@ -107,23 +108,62 @@ void KeyboardPress(unsigned char pressedKey, int mouseX, int mouseY){
             camera_mode = !camera_mode;
             break;
         case 'w':
-            cout << "vrp: (" << VRP[0] <<","<< VRP[1]<<","<<VRP[2]<<")"<<endl;
-            VRP[0] += (VRP[0] - OBS[0])*0.01;
-            VRP[1] += (VRP[1] - OBS[1])*0.01;
-            VRP[2] += (VRP[2] - OBS[2])*0.01;
+            OBS[0] += (VRP[0] - OBS[0])*0.1;
+            OBS[1] += (VRP[1] - OBS[1])*0.1;
+            OBS[2] += (VRP[2] - OBS[2])*0.1;
+            VRP[0] += (VRP[0] - OBS[0])*0.1;
+            VRP[1] += (VRP[1] - OBS[1])*0.1;
+            VRP[2] += (VRP[2] - OBS[2])*0.1;
+            cout << "v: (" << VRP[0] <<","<< VRP[1]<<","<<VRP[2]<<")  o: (";
+            cout << OBS[0]<< ","<< OBS[1]<< ","<< OBS[2]<<")"<<endl;
             break; 
         case 's':
-            cout << "vrp: (" << VRP[0] <<","<< VRP[1]<<","<<VRP[2]<<")"<<endl;
-            VRP[0] -= (VRP[0] - OBS[0])*0.01;
-            VRP[1] -= (VRP[1] - OBS[1])*0.01;
-            VRP[2] -= (VRP[2] - OBS[2])*0.01;
+            OBS[0] -= (VRP[0] - OBS[0])*0.1;
+            OBS[1] -= (VRP[1] - OBS[1])*0.1;
+            OBS[2] -= (VRP[2] - OBS[2])*0.1;
+            VRP[0] -= (VRP[0] - OBS[0])*0.1;
+            VRP[1] -= (VRP[1] - OBS[1])*0.1;
+            VRP[2] -= (VRP[2] - OBS[2])*0.1;
+            cout << "v: (" << VRP[0] <<","<< VRP[1]<<","<<VRP[2]<<")  o: (";
+            cout << OBS[0]<< ","<< OBS[1]<< ","<< OBS[2]<<")"<<endl;
             break;
         case 'a':
-            // viewerZenith-=0.01;
+            RotateCamera(0.1,0);
+            cout << "v: (" << VRP[0] <<","<< VRP[1]<<","<<VRP[2]<<")  o: (";
+            cout << OBS[0]<< ","<< OBS[1]<< ","<< OBS[2]<<")"<<endl;
             break;
         case 'd':
-            // viewerZenith+=0.01;
+            RotateCamera(-0.1,0);
+            cout << "v: (" << VRP[0] <<","<< VRP[1]<<","<<VRP[2]<<")  o: (";
+            cout << OBS[0]<< ","<< OBS[1]<< ","<< OBS[2]<<")"<<endl;
             break;
+        case 'f':
+            RotateCamera(0,0.1);
+            cout << "v: (" << VRP[0] <<","<< VRP[1]<<","<<VRP[2]<<")  o: (";
+            cout << OBS[0]<< ","<< OBS[1]<< ","<< OBS[2]<<")"<<endl;
+            break;
+        case 'v':
+            RotateCamera(0,-0.1);
+            cout << "v: (" << VRP[0] <<","<< VRP[1]<<","<<VRP[2]<<")  o: (";
+            cout << OBS[0]<< ","<< OBS[1]<< ","<< OBS[2]<<")"<<endl;
+            break;
+        // panning
+        // case 'i':
+        //     OBS[0] += paningplane[0];
+        //     VRP[0] += paningplane[0];
+        //     break;
+        // case 'k':
+        //     OBS[0] -= paningplane[0];
+        //     VRP[0] -= paningplane[0];
+        //     break;
+        // case 'j':
+        //     OBS[2] += paningplane[2];
+        //     VRP[2] += paningplane[2];
+        //     break;
+        // case 'l':
+        //     OBS[2] -= paningplane[2];
+        //     VRP[2] -= paningplane[2];
+        //     break;
         case '+':
             EarthDayIncrement *= 2.0;
             if (EarthDayIncrement > 10.0)
@@ -135,23 +175,44 @@ void KeyboardPress(unsigned char pressedKey, int mouseX, int mouseY){
                 EarthDayIncrement = 0.01;
             break;
         case 'z':
-            ViewerDistance -= VIEWER_DISTANCE_INCREMENT;
-            if (ViewerDistance < MINIMUM_VIEWER_DISTANCE)
-                ViewerDistance = MINIMUM_VIEWER_DISTANCE;
+            OBS[0] += (VRP[0] - OBS[0])*0.01;
+            OBS[1] += (VRP[1] - OBS[1])*0.01;
+            OBS[2] += (VRP[2] - OBS[2])*0.01;
+            // ViewerDistance -= VIEWER_DISTANCE_INCREMENT;
+            // if (ViewerDistance < MINIMUM_VIEWER_DISTANCE)
+            //     ViewerDistance = MINIMUM_VIEWER_DISTANCE;
             break; 
         case 'Z':
-            ViewerDistance += VIEWER_DISTANCE_INCREMENT;
-            if (ViewerDistance > MAXIMUM_VIEWER_DISTANCE)
-                ViewerDistance = MAXIMUM_VIEWER_DISTANCE;
-            break; 
+            OBS[0] -= (VRP[0] - OBS[0])*0.01;
+            OBS[1] -= (VRP[1] - OBS[1])*0.01;
+            OBS[2] -= (VRP[2] - OBS[2])*0.01;
+            // ViewerDistance += VIEWER_DISTANCE_INCREMENT;
+            // if (ViewerDistance > MAXIMUM_VIEWER_DISTANCE)
+            //     ViewerDistance = MAXIMUM_VIEWER_DISTANCE;
+            break;
+        case 'n':
+            cout << "v: (" << VRP[0] <<","<< VRP[1]<<","<<VRP[2]<<")  o: (";
+            cout << OBS[0]<< ","<< OBS[1]<< ","<< OBS[2]<<")"<<endl;
+            CameraPanPlane();
+        break;
         case 'r':
             cout << "Camera reset!" << endl;
-            VRP[3] = ( 0.0, 0.0, 0.0 );
+            // VRP[3] = ( 0.0, 0.0, 0.0 );
+            VRP[0] = 0.0;
+            VRP[1] = 0.0;
+            VRP[2] = 0.0;
 
             ViewportSize[2] = (750, 750 / ASPECT_RATIO);
             ViewerDistance = INITIAL_VIEWER_DISTANCE;
             viewerZenith  = INITIAL_VIEWER_ZENITH;
             viewerAzimuth = INITIAL_VIEWER_AZIMUTH;
+            OBS[0] = VRP[0] + ViewerDistance * sin(viewerZenith) * sin(viewerAzimuth); 
+            OBS[1] = VRP[1] + ViewerDistance * cos(viewerZenith);
+            OBS[2] = VRP[2] + ViewerDistance * sin(viewerZenith) * cos(viewerAzimuth);
+            ConfigCamera();
+            // RotateCamera(0.0,0.0);
+            cout << "v: (" << VRP[0] <<","<< VRP[1]<<","<<VRP[2]<<")  o: (";
+            cout << OBS[0]<< ","<< OBS[1]<< ","<< OBS[2]<<")"<<endl;
             break;
 
         case 27:
@@ -168,10 +229,11 @@ void KeyboardPress(unsigned char pressedKey, int mouseX, int mouseY){
 void NonASCIIKeyboardPress(int pressedKey, int mouseX, int mouseY) {
     glutIgnoreKeyRepeat(false);
     switch(pressedKey) {
-        case GLUT_KEY_RIGHT:{ 
-            viewerAzimuth += VIEWER_ANGLE_INCREMENT; 
+        case GLUT_KEY_RIGHT:{
+            viewerAzimuth += VIEWER_ANGLE_INCREMENT;
             if (viewerAzimuth > 2*PI) 
-                viewerAzimuth -= 2*PI; 
+                viewerAzimuth -= 2*PI;
+
             break; 
         }
         case GLUT_KEY_LEFT:{ 
@@ -193,6 +255,9 @@ void NonASCIIKeyboardPress(int pressedKey, int mouseX, int mouseY) {
             break; 
         }
     }
+    OBS[0] = VRP[0] + ViewerDistance * sin(viewerZenith) * sin(viewerAzimuth);
+    OBS[1] = VRP[1] + ViewerDistance * cos(viewerZenith);
+    OBS[2] = VRP[2] + ViewerDistance * sin(viewerZenith) * cos(viewerAzimuth);
 }
 
 // The EarthDayIncrement represents the fraction of an      //
@@ -218,46 +283,76 @@ void Draw_Axis_Lines(){
    glPopMatrix ();
 }
 
-void ConfigCamera(){
-    if (camera_mode){
-        gluLookAt(
-        OBS[0], OBS[1], OBS[2],
-        VRP[0], VRP[1], VRP[2],
-        CR[0],CR[1],CR[2]);
-    }
-    else{
-        /*GLdouble left,
-          GLdouble right,
-          GLdouble bottom,
-          GLdouble top,
-          GLdouble zNear,
-          GLdouble zFar*/
-        glOrtho(0.0, WindowSize[0], WindowSize[1], 0.0, 0.2, 100.0);        
-    }
+void CameraPanPlane(){
+    paningplane[0] = VRP[0] - OBS[0];
+    paningplane[1] = VRP[1] - OBS[1];
+    paningplane[2] = VRP[2] - OBS[2];
+    paningplane[3] = (OBS[0]*VRP[0]*(-1)) + (OBS[1]*VRP[1]*(-1)) + (OBS[2]*VRP[2]*(-1));
+    cout << "cpp: (" << paningplane[0] <<","<< paningplane[1]<<","<<paningplane[2]<<","<<paningplane[3]<<")"<<endl;
 }
 
-// Principal display routine: sets up lighting,
-// and camera properties, clears the frame buffer
-void Display() {
-    
+void RotateCamera(float h, float v) {
+  viewerAzimuth += h; 
+  viewerZenith += v; 
+  GLfloat aux[3];
+  // aux[0] = cos(viewerZenith) * sin(viewerAzimuth); 
+  // aux[1] = -sin(viewerZenith);
+  // aux[2] = cos(viewerZenith) * sin(viewerAzimuth); 
 
+  aux[0] = sin(viewerZenith) * sin(viewerAzimuth);
+  aux[1] = cos(viewerZenith);
+  aux[2] = sin(viewerZenith) * cos(viewerAzimuth);
+
+  // CR[0] = sin(viewerZenith) * sin(viewerAzimuth);
+  // CR[1] = cos(viewerZenith);
+  // CR[2] = sin(viewerZenith) * cos(viewerAzimuth);
+
+  // VRP[0] = OBS[0] + a + ViewerDistance;
+  // VRP[1] = OBS[1] + b + ViewerDistance;
+  // VRP[2] = OBS[2] + b + ViewerDistance;
+    VRP[0] = OBS[0] + aux[0];
+    VRP[1] = OBS[1] + aux[1];
+    VRP[2] = OBS[2] + aux[2];
+    GLfloat aux2[3];
+
+    aux2[0] = (VRP[0] - OBS[0]);
+    aux2[1] = (VRP[1] - OBS[1]);
+    aux2[2] = (VRP[2] - OBS[2]);
+
+    CameraPanPlane();
+    /*
+    void Camera::RotateCamera(float h, float v)
+{ 
+  hRadians += h; 
+  vRadians += v; 
+
+  cam_norm.x = cos(vRadians) * sin(hRadians); 
+  cam_norm.y = -sin(vRadians);
+  cam_norm.z = cos(vRadians) * sin(hRadians); 
+
+  cam_up.x = sin(vRadians) * sin(hRadians);
+  cam_up.y = cos(vRadians);
+  cam_up.z = sin(vRadians) * cos(hRadians);
+} 
+
+void Camera::Place()
+{ 
+  //position, camera target, up vector 
+  gluLookAt(cam_pos.x, cam_pos.y, cam_pos.z,
+            cam_pos.x+cam_norm.x, cam+pos.y+cam_norm.y, camp_pos.z+cam_norm.z,
+            cam_up.x, cam_up.y, cam_up.z); 
+} 
+    }
+
+    void Camera::Place() {
+    //position, camera target, up vector
+    gluLookAt(cam_position.x, cam_position.y, cam_position.z, cam_target.x, cam_target.y, cam_target.z, cam_up.x, cam_up.y, cam_up.z);
+    } */
+
+} 
+
+void ConfigCamera(){
     // Set up the properties of the viewing camera.
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-
-    /*GLdouble fovy,
-     GLdouble aspect,
-     GLdouble zNear,
-     GLdouble zFar*/
-    gluPerspective(60.0, ASPECT_RATIO, 0.2, 100.0);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-    // glOrtho(0.0f, windowWidth, windowHeight, 0.0f, 0.0f, 1.0f);
-    ConfigCamera();
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
-
-    // Position and orient viewer.
     /*gluLookAt(
       GLdouble eyex,\
       GLdouble eyey, |> position of the camera
@@ -271,19 +366,95 @@ void Display() {
       GLdouble upy, |> rotation
       GLdouble upz /
     );*/
-    OBS[0] = VRP[0] + ViewerDistance * sin(viewerZenith) * sin(viewerAzimuth);
-    OBS[1] = VRP[1] + ViewerDistance * cos(viewerZenith);
-    OBS[2] = VRP[2] + ViewerDistance * sin(viewerZenith) * cos(viewerAzimuth);
+    // glLoadIdentity();
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    // glPushMatrix();
+    // glTranslatef
+    if (camera_mode){
+
+        /*GLdouble fovy,
+         GLdouble aspect,
+         GLdouble zNear,
+         GLdouble zFar*/
+        gluPerspective(60.0, ASPECT_RATIO, 0.2, 100.0);
+    }
+    else{
+        /*glOrtho(
+          GLdouble left,
+          GLdouble right,
+          GLdouble bottom,
+          GLdouble top,
+          GLdouble zNear,
+          GLdouble zFar
+        );*/
+        // glOrtho(0.0, WindowSize[0], WindowSize[1], -5.0, -5.0, 5.0);        
+        glOrtho(-1.0, 1.0, -1.0, 1.0, 0.0, -1.0);
+    }
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    // Position and orient viewer.
+        gluLookAt(
+        OBS[0], OBS[1], OBS[2],
+        VRP[0], VRP[1], VRP[2],
+        CR[0],CR[1],CR[2]);
+}
+
+// Principal display routine: sets up lighting,
+// and camera properties, clears the frame buffer
+void Display() {
+    if(help_menu) HelpDisplay();
+
+    // OBS[0] = VRP[0] + ViewerDistance * sin(viewerZenith) * sin(viewerAzimuth);
+    // OBS[1] = VRP[1] + ViewerDistance * cos(viewerZenith);
+    // OBS[2] = VRP[2] + ViewerDistance * sin(viewerZenith) * cos(viewerAzimuth);
+    ConfigCamera();
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
 
 
+
+    if (axis_bool) Draw_Axis_Lines();
     // Render scene.
+    // EARTH
     drawEarthAndMoon();
     drawSun();
     drawPlanets();
-    if (axis_bool) Draw_Axis_Lines();
     glDepthMask(GL_TRUE);
     glutSwapBuffers();
     glFlush();
+}
+
+void HelpDisplay(){
+    help_menu = false;
+    cout << "-----------------ZOOM & INFO CONTROLS-----------------"<<endl;
+    cout << "|'h' to show this menu.                              |"<<endl;
+    cout << "|'q' or 'esc' to quit.                               |"<<endl;
+    cout << "|'+' to speed up the system.                         |"<<endl;
+    cout << "|'-' to slow down the system.                        |"<<endl;
+    cout << "|'Z' to zoom in.                                     |"<<endl;
+    cout << "|'z' to zoom out.                                    |"<<endl;
+    cout << "|'m' un/display axis lines.                          |"<<endl;
+    cout << "|'n' show VRP, OBS info.                             |"<<endl;
+    cout << "|'r' to reset the camera to default.                 |"<<endl;
+    cout << "|'c' to change between camera modes (WIP).           |"<<endl;
+    cout << "|                                                    |"<<endl;
+    cout << "---------------------MOVEMENT-------------------------"<<endl;
+    cout << "|'w' to walk forward.                                |"<<endl;
+    cout << "|'a' spin the camera left.                           |"<<endl;
+    cout << "|'s' to walk backwards.                              |"<<endl;
+    cout << "|'d' spin the camera right.                          |"<<endl;
+    cout << "|'f' spin the camera up.                             |"<<endl;
+    cout << "|'v' spin the camera down.                           |"<<endl;
+    cout << "|'i' pan the camera up. (WIP)                        |"<<endl;
+    cout << "|'j' pan the camera left. (WIP)                      |"<<endl;
+    cout << "|'k' pan the camera down. (WIP)                      |"<<endl;
+    cout << "|'l' pan the camera right. (WIP)                     |"<<endl;
+    cout << "|'up' to orbit the camera up around the VRP.         |"<<endl;
+    cout << "|'left' to orbit the camera left around the VRP.     |"<<endl;
+    cout << "|'right' to orbit the camera right around the VRP.   |"<<endl;
+    cout << "|'down' to orbit the camera down around the VRP.     |"<<endl;
+    cout << "------------------------------------------------------"<<endl;
+
 }
 
 //makes calls to the generic planet drawing function. took this out
