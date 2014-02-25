@@ -56,7 +56,7 @@ void ResizeWindow(GLsizei w, GLsizei h);
 void drawEarthAndMoon();
 void drawSun();
 void drawPlanets();
-void drawPlanet(GLfloat inclination, GLfloat orbitDuration, GLfloat orbitRadius, GLfloat rotationDuration, GLfloat radius, float r, float g, float b) ;
+void drawPlanet(GLfloat inclination, GLfloat orbitDuration, GLfloat orbitRadius, GLfloat rotationDuration, GLfloat radius, float r, float g, float b);
 
 /****************************/
 /* Function implementations */
@@ -74,7 +74,7 @@ int main(int argc, char** argv) {
     glutInitDisplayMode( GLUT_DOUBLE | GLUT_RGBA | GLUT_STENCIL | GLUT_DEPTH );
     glutInitWindowPosition( INIT_WINDOW_POSITION[0]+400, INIT_WINDOW_POSITION[1]-50);
     glutInitWindowSize( WindowSize[0], WindowSize[1] );
-    glutCreateWindow( "IDI: Solar System 2.0" );
+    glutCreateWindow( "IDI: Solar System 3.0" );
 
     // Specify the resizing and refreshing routines.
     glutReshapeFunc(ResizeWindow);
@@ -85,8 +85,10 @@ int main(int argc, char** argv) {
 
     // Set up depth testing.
     glEnable(GL_DEPTH_TEST);
-    glDepthFunc(GL_LEQUAL);
+    // glDepthFunc(GL_LEQUAL);
     glClearColor(0.0, 0.0, 0.0, 0.0);
+    glEnable(GL_LIGHTING);
+    glEnable(GL_LIGHT0); 
     glutMainLoop();
     return 0;
 }
@@ -292,27 +294,18 @@ void CameraPanPlane(){
 }
 
 void RotateCamera(float h, float v) {
-  viewerAzimuth += h; 
-  viewerZenith += v; 
-  GLfloat aux[3];
-  // aux[0] = cos(viewerZenith) * sin(viewerAzimuth); 
-  // aux[1] = -sin(viewerZenith);
-  // aux[2] = cos(viewerZenith) * sin(viewerAzimuth); 
+    viewerAzimuth += h;
+    viewerZenith += v;
+    GLfloat aux[3];
+    
+    aux[0] = sin(viewerZenith) * sin(viewerAzimuth);
+    aux[1] = cos(viewerZenith);
+    aux[2] = sin(viewerZenith) * cos(viewerAzimuth);
 
-  aux[0] = sin(viewerZenith) * sin(viewerAzimuth);
-  aux[1] = cos(viewerZenith);
-  aux[2] = sin(viewerZenith) * cos(viewerAzimuth);
-
-  // CR[0] = sin(viewerZenith) * sin(viewerAzimuth);
-  // CR[1] = cos(viewerZenith);
-  // CR[2] = sin(viewerZenith) * cos(viewerAzimuth);
-
-  // VRP[0] = OBS[0] + a + ViewerDistance;
-  // VRP[1] = OBS[1] + b + ViewerDistance;
-  // VRP[2] = OBS[2] + b + ViewerDistance;
     VRP[0] = OBS[0] + aux[0];
     VRP[1] = OBS[1] + aux[1];
     VRP[2] = OBS[2] + aux[2];
+
     GLfloat aux2[3];
 
     aux2[0] = (VRP[0] - OBS[0]);
@@ -320,36 +313,7 @@ void RotateCamera(float h, float v) {
     aux2[2] = (VRP[2] - OBS[2]);
 
     CameraPanPlane();
-    /*
-    void Camera::RotateCamera(float h, float v)
-{ 
-  hRadians += h; 
-  vRadians += v; 
-
-  cam_norm.x = cos(vRadians) * sin(hRadians); 
-  cam_norm.y = -sin(vRadians);
-  cam_norm.z = cos(vRadians) * sin(hRadians); 
-
-  cam_up.x = sin(vRadians) * sin(hRadians);
-  cam_up.y = cos(vRadians);
-  cam_up.z = sin(vRadians) * cos(hRadians);
-} 
-
-void Camera::Place()
-{ 
-  //position, camera target, up vector 
-  gluLookAt(cam_pos.x, cam_pos.y, cam_pos.z,
-            cam_pos.x+cam_norm.x, cam+pos.y+cam_norm.y, camp_pos.z+cam_norm.z,
-            cam_up.x, cam_up.y, cam_up.z); 
-} 
-    }
-
-    void Camera::Place() {
-    //position, camera target, up vector
-    gluLookAt(cam_position.x, cam_position.y, cam_position.z, cam_target.x, cam_target.y, cam_target.z, cam_up.x, cam_up.y, cam_up.z);
-    } */
-
-} 
+}
 
 void ConfigCamera(){
     // Set up the properties of the viewing camera.
@@ -389,7 +353,8 @@ void ConfigCamera(){
           GLdouble zFar
         );*/
         // glOrtho(0.0, WindowSize[0], WindowSize[1], -5.0, -5.0, 5.0);
-        glOrtho(-1.0, 1.0, -1.0, 1.0, 0.0, -1.0);
+     // glOrtho(left, right, bottom, top, zNear,  zFar);
+        glOrtho(-1.0, 1.0, -1.0, 1.0, -1.0, 1.0);
     }
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     // Position and orient viewer.
@@ -403,15 +368,9 @@ void ConfigCamera(){
 // and camera properties, clears the frame buffer
 void Display() {
     if(help_menu) HelpDisplay();
-
-    // OBS[0] = VRP[0] + ViewerDistance * sin(viewerZenith) * sin(viewerAzimuth);
-    // OBS[1] = VRP[1] + ViewerDistance * cos(viewerZenith);
-    // OBS[2] = VRP[2] + ViewerDistance * sin(viewerZenith) * cos(viewerAzimuth);
     ConfigCamera();
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-
-
 
     if (axis_bool) Draw_Axis_Lines();
     // Render scene.
@@ -454,7 +413,6 @@ void HelpDisplay(){
     cout << "|'right' to orbit the camera right around the VRP.   |"<<endl;
     cout << "|'down' to orbit the camera down around the VRP.     |"<<endl;
     cout << "------------------------------------------------------"<<endl;
-
 }
 
 //makes calls to the generic planet drawing function. took this out
@@ -467,7 +425,6 @@ void drawPlanets(){
 
     drawPlanet(VENUS_INCLINATION, VENUS_ORBIT_DUR, VENUS_ORBIT_RADIUS,
             VENUS_ROTATION_DUR, VENUS_RADIUS, 0, 1.0, 0);
-
 }
 
 // Window-reshaping callback, adjusting the viewport to be as large
@@ -493,13 +450,12 @@ void ResizeWindow(int w, int h) {
     glLoadIdentity();
 }
 
-
 //Draws the texture-mapped earth and moon.
 void drawEarthAndMoon() {
     GLfloat MoonRevolution = EarthDaysTranspired / LUNAR_CYCLE;
     GLUquadricObj* quadro = gluNewQuadric();                            
-    gluQuadricNormals(quadro, GLU_SMOOTH);              
-    glEnable(GL_TEXTURE_2D);
+    // gluQuadricNormals(quadro, GLU_SMOOTH);              
+    // glEnable(GL_TEXTURE_2D);
         glPushMatrix();
             // glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
             glPushMatrix();
@@ -524,35 +480,35 @@ void drawEarthAndMoon() {
             // display_model(m); //WIP: display homer rotating
             gluSphere(quadro, MOON_RADIUS, 700, 700);
         glPopMatrix();
-    glDisable(GL_TEXTURE_2D);
-    gluDeleteQuadric(quadro);
+    // glDisable(GL_TEXTURE_2D);
+    // gluDeleteQuadric(quadro);
 }
 
 //Function to draw the sun at the origin
 void drawSun() {
     glColor3f(1.0,1.0,0); //yellow
     GLUquadricObj* quadro = gluNewQuadric();                            
-    gluQuadricNormals(quadro, GLU_SMOOTH);      
-    gluQuadricTexture(quadro, GL_TRUE);         
-    glEnable(GL_TEXTURE_2D);
+    // gluQuadricNormals(quadro, GLU_SMOOTH);      
+    // gluQuadricTexture(quadro, GL_TRUE);         
+    // glEnable(GL_TEXTURE_2D);
         glPushMatrix();
-            glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+            // glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
             glPushMatrix();
                 glRotatef( -90.0, 1.0, 0.0, 0.0 );
                 gluSphere(quadro, SUN_RADIUS, 48, 48);
             glPopMatrix();
         glPopMatrix();
-    glDisable(GL_TEXTURE_2D);
-    gluDeleteQuadric(quadro);
+    // glDisable(GL_TEXTURE_2D);
+    // gluDeleteQuadric(quadro);
 }
 
 //Given parameters about the planets dimension, orbit, radius etc, this function is used to draw everything except the sun, earth/moon. and saturns rings, as they are special cases of this function
 void drawPlanet(GLfloat inclination, GLfloat orbitDuration,
         GLfloat orbitRadius, GLfloat rotationDuration, GLfloat radius, float r, float g, float b) {
     GLUquadricObj* quadro = gluNewQuadric();
-    gluQuadricNormals(quadro, GLU_SMOOTH);
+    // gluQuadricNormals(quadro, GLU_SMOOTH);
     glColor3f(r,g,b);
-    glEnable(GL_TEXTURE_2D);
+    // glEnable(GL_TEXTURE_2D);
         glPushMatrix();
             glPushMatrix();
                 glRotatef( inclination, 0.0, 0.0, 1.0);
@@ -563,5 +519,5 @@ void drawPlanet(GLfloat inclination, GLfloat orbitDuration,
                 gluSphere(quadro, radius, 48, 48);
             glPopMatrix();
         glPopMatrix();
-    gluDeleteQuadric(quadro);
+    // gluDeleteQuadric(quadro);
 }

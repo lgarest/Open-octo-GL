@@ -1,0 +1,2183 @@
+<ui version="4.0" >
+ <class>Principal</class>
+ <widget class="QWidget" name="Principal" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>664</width>
+    <height>698</height>
+   </rect>
+  </property>
+  <property name="sizePolicy" >
+   <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="focusPolicy" >
+   <enum>Qt::NoFocus</enum>
+  </property>
+  <property name="windowTitle" >
+   <string>Principal</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_6" >
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_10" >
+     <item>
+      <widget class="GLWidget" name="gLWidget" >
+       <property name="sizePolicy" >
+        <sizepolicy vsizetype="Expanding" hsizetype="Expanding" >
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize" >
+        <size>
+         <width>400</width>
+         <height>400</height>
+        </size>
+       </property>
+       <property name="focusPolicy" >
+        <enum>Qt::StrongFocus</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_9" >
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_3" >
+         <item>
+          <widget class="QPushButton" name="pushButton_9" >
+           <property name="minimumSize" >
+            <size>
+             <width>70</width>
+             <height>70</height>
+            </size>
+           </property>
+           <property name="maximumSize" >
+            <size>
+             <width>70</width>
+             <height>70</height>
+            </size>
+           </property>
+           <property name="text" >
+            <string/>
+           </property>
+           <property name="icon" >
+            <iconset>
+             <normaloff>../imatges/window.jpg</normaloff>../imatges/window.jpg</iconset>
+           </property>
+           <property name="iconSize" >
+            <size>
+             <width>64</width>
+             <height>64</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_13" >
+           <property name="minimumSize" >
+            <size>
+             <width>70</width>
+             <height>70</height>
+            </size>
+           </property>
+           <property name="maximumSize" >
+            <size>
+             <width>70</width>
+             <height>70</height>
+            </size>
+           </property>
+           <property name="text" >
+            <string/>
+           </property>
+           <property name="icon" >
+            <iconset>
+             <normaloff>../imatges/door.jpg</normaloff>../imatges/door.jpg</iconset>
+           </property>
+           <property name="iconSize" >
+            <size>
+             <width>64</width>
+             <height>64</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_12" >
+           <property name="minimumSize" >
+            <size>
+             <width>70</width>
+             <height>70</height>
+            </size>
+           </property>
+           <property name="maximumSize" >
+            <size>
+             <width>70</width>
+             <height>70</height>
+            </size>
+           </property>
+           <property name="text" >
+            <string/>
+           </property>
+           <property name="icon" >
+            <iconset>
+             <normaloff>../imatges/pyramid.jpg</normaloff>../imatges/pyramid.jpg</iconset>
+           </property>
+           <property name="iconSize" >
+            <size>
+             <width>64</width>
+             <height>64</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_11" >
+           <property name="minimumSize" >
+            <size>
+             <width>70</width>
+             <height>70</height>
+            </size>
+           </property>
+           <property name="maximumSize" >
+            <size>
+             <width>70</width>
+             <height>70</height>
+            </size>
+           </property>
+           <property name="text" >
+            <string/>
+           </property>
+           <property name="icon" >
+            <iconset>
+             <normaloff>../imatges/cub.jpg</normaloff>../imatges/cub.jpg</iconset>
+           </property>
+           <property name="iconSize" >
+            <size>
+             <width>64</width>
+             <height>64</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_10" >
+           <property name="minimumSize" >
+            <size>
+             <width>70</width>
+             <height>70</height>
+            </size>
+           </property>
+           <property name="maximumSize" >
+            <size>
+             <width>70</width>
+             <height>70</height>
+            </size>
+           </property>
+           <property name="text" >
+            <string/>
+           </property>
+           <property name="icon" >
+            <iconset>
+             <normaloff>../imatges/prisma.jpg</normaloff>../imatges/prisma.jpg</iconset>
+           </property>
+           <property name="iconSize" >
+            <size>
+             <width>64</width>
+             <height>64</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_3" >
+           <property name="orientation" >
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0" >
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_8" >
+         <property name="orientation" >
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0" >
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_5" >
+         <item>
+          <widget class="QPushButton" name="pushButton_2" >
+           <property name="text" >
+            <string>&amp;Load Object</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="ButtonReset" >
+           <property name="text" >
+            <string>&amp;Reset Camera</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="checkBox_4" >
+           <property name="text" >
+            <string>Parts amagades</string>
+           </property>
+           <property name="checked" >
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="checkBox" >
+           <property name="text" >
+            <string>Ortho</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupBox" >
+           <property name="minimumSize" >
+            <size>
+             <width>50</width>
+             <height>100</height>
+            </size>
+           </property>
+           <property name="title" >
+            <string>Render Mode</string>
+           </property>
+           <property name="flat" >
+            <bool>false</bool>
+           </property>
+           <property name="checkable" >
+            <bool>false</bool>
+           </property>
+           <widget class="QWidget" name="layoutWidget" >
+            <property name="geometry" >
+             <rect>
+              <x>1</x>
+              <y>21</y>
+              <width>76</width>
+              <height>45</height>
+             </rect>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_7" >
+             <item>
+              <widget class="QRadioButton" name="radioSolid" >
+               <property name="enabled" >
+                <bool>true</bool>
+               </property>
+               <property name="text" >
+                <string>Solid</string>
+               </property>
+               <property name="checked" >
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QRadioButton" name="radioWire" >
+               <property name="text" >
+                <string>Wireframe</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_3" >
+           <property name="text" >
+            <string>&amp;Material i Llums</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_2" >
+           <item>
+            <spacer name="horizontalSpacer_5" >
+             <property name="orientation" >
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0" >
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout" >
+             <item>
+              <widget class="QLabel" name="label_22" >
+               <property name="text" >
+                <string>Escala:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSlider" name="verticalSlider" >
+               <property name="minimum" >
+                <number>1</number>
+               </property>
+               <property name="maximum" >
+                <number>10</number>
+               </property>
+               <property name="orientation" >
+                <enum>Qt::Vertical</enum>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_7" >
+             <property name="orientation" >
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0" >
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <spacer name="verticalSpacer" >
+           <property name="orientation" >
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0" >
+            <size>
+             <width>99</width>
+             <height>17</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_6" >
+     <item>
+      <widget class="QTabWidget" name="tabWidget" >
+       <property name="enabled" >
+        <bool>true</bool>
+       </property>
+       <property name="minimumSize" >
+        <size>
+         <width>200</width>
+         <height>200</height>
+        </size>
+       </property>
+       <property name="currentIndex" >
+        <number>0</number>
+       </property>
+       <widget class="QWidget" name="tabKd" >
+        <attribute name="title" >
+         <string>Diffuse</string>
+        </attribute>
+        <widget class="QWidget" name="layoutWidget" >
+         <property name="geometry" >
+          <rect>
+           <x>10</x>
+           <y>20</y>
+           <width>261</width>
+           <height>121</height>
+          </rect>
+         </property>
+         <layout class="QGridLayout" name="gridLayout" >
+          <item row="0" column="0" >
+           <widget class="QLabel" name="label" >
+            <property name="text" >
+             <string>Red</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1" >
+           <widget class="QSlider" name="horizontalSliderRD" >
+            <property name="maximum" >
+             <number>255</number>
+            </property>
+            <property name="orientation" >
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0" >
+           <widget class="QLabel" name="label_2" >
+            <property name="text" >
+             <string>Green</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1" >
+           <widget class="QSlider" name="horizontalSliderGD" >
+            <property name="maximum" >
+             <number>255</number>
+            </property>
+            <property name="orientation" >
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0" >
+           <widget class="QLabel" name="label_3" >
+            <property name="text" >
+             <string>Blue</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1" >
+           <widget class="QSlider" name="horizontalSliderBD" >
+            <property name="maximum" >
+             <number>255</number>
+            </property>
+            <property name="orientation" >
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="tabKs" >
+        <attribute name="title" >
+         <string>Specular</string>
+        </attribute>
+        <widget class="QWidget" name="layoutWidget_2" >
+         <property name="geometry" >
+          <rect>
+           <x>10</x>
+           <y>20</y>
+           <width>261</width>
+           <height>121</height>
+          </rect>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_2" >
+          <item row="0" column="0" >
+           <widget class="QLabel" name="label_4" >
+            <property name="text" >
+             <string>Red</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1" >
+           <widget class="QSlider" name="horizontalSliderRS" >
+            <property name="maximum" >
+             <number>255</number>
+            </property>
+            <property name="orientation" >
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0" >
+           <widget class="QLabel" name="label_5" >
+            <property name="text" >
+             <string>Green</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1" >
+           <widget class="QSlider" name="horizontalSliderGS" >
+            <property name="maximum" >
+             <number>255</number>
+            </property>
+            <property name="orientation" >
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0" >
+           <widget class="QLabel" name="label_6" >
+            <property name="text" >
+             <string>Blue</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1" >
+           <widget class="QSlider" name="horizontalSliderBS" >
+            <property name="maximum" >
+             <number>255</number>
+            </property>
+            <property name="orientation" >
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="tabKa" >
+        <attribute name="title" >
+         <string>Ambient</string>
+        </attribute>
+        <widget class="QWidget" name="layoutWidget_3" >
+         <property name="geometry" >
+          <rect>
+           <x>10</x>
+           <y>30</y>
+           <width>261</width>
+           <height>121</height>
+          </rect>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_3" >
+          <item row="0" column="0" >
+           <widget class="QLabel" name="label_7" >
+            <property name="text" >
+             <string>Red</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1" >
+           <widget class="QSlider" name="horizontalSliderRA" >
+            <property name="maximum" >
+             <number>255</number>
+            </property>
+            <property name="orientation" >
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0" >
+           <widget class="QLabel" name="label_8" >
+            <property name="text" >
+             <string>Green</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1" >
+           <widget class="QSlider" name="horizontalSliderGA" >
+            <property name="maximum" >
+             <number>255</number>
+            </property>
+            <property name="orientation" >
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0" >
+           <widget class="QLabel" name="label_9" >
+            <property name="text" >
+             <string>Blue</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1" >
+           <widget class="QSlider" name="horizontalSliderBA" >
+            <property name="maximum" >
+             <number>255</number>
+            </property>
+            <property name="orientation" >
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="tabS" >
+        <attribute name="title" >
+         <string>Shininess</string>
+        </attribute>
+        <widget class="QWidget" name="layoutWidget_4" >
+         <property name="geometry" >
+          <rect>
+           <x>30</x>
+           <y>70</y>
+           <width>211</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_4" >
+          <item>
+           <widget class="QLabel" name="label_10" >
+            <property name="text" >
+             <string>Shininess:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSlider" name="horizontalSliderS" >
+            <property name="maximum" >
+             <number>128</number>
+            </property>
+            <property name="orientation" >
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </widget>
+     </item>
+     <item>
+      <widget class="QTabWidget" name="Llums" >
+       <property name="enabled" >
+        <bool>true</bool>
+       </property>
+       <property name="currentIndex" >
+        <number>0</number>
+       </property>
+       <widget class="QWidget" name="tab" >
+        <attribute name="title" >
+         <string>Llum 0</string>
+        </attribute>
+        <widget class="QWidget" name="layoutWidget_5" >
+         <property name="geometry" >
+          <rect>
+           <x>10</x>
+           <y>10</y>
+           <width>271</width>
+           <height>161</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_4" >
+          <item>
+           <layout class="QGridLayout" name="gridLayout_5" >
+            <item row="0" column="0" >
+             <widget class="QLabel" name="label_15" >
+              <property name="text" >
+               <string>Red</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1" >
+             <widget class="QSlider" name="horizontalSliderRD_3" >
+              <property name="minimum" >
+               <number>0</number>
+              </property>
+              <property name="maximum" >
+               <number>255</number>
+              </property>
+              <property name="value" >
+               <number>255</number>
+              </property>
+              <property name="orientation" >
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0" >
+             <widget class="QLabel" name="label_16" >
+              <property name="text" >
+               <string>Green</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1" >
+             <widget class="QSlider" name="horizontalSliderGD_3" >
+              <property name="maximum" >
+               <number>255</number>
+              </property>
+              <property name="sliderPosition" >
+               <number>255</number>
+              </property>
+              <property name="orientation" >
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="0" >
+             <widget class="QLabel" name="label_17" >
+              <property name="text" >
+               <string>Blue</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1" >
+             <widget class="QSlider" name="horizontalSliderBD_3" >
+              <property name="maximum" >
+               <number>255</number>
+              </property>
+              <property name="sliderPosition" >
+               <number>255</number>
+              </property>
+              <property name="orientation" >
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="0" >
+             <widget class="QCheckBox" name="checkBox_3" >
+              <property name="text" >
+               <string>Activada</string>
+              </property>
+              <property name="checked" >
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_5" >
+            <item>
+             <widget class="QLabel" name="label_18" >
+              <property name="text" >
+               <string>Position:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSlider" name="horizontalSlider_2" >
+              <property name="maximum" >
+               <number>50</number>
+              </property>
+              <property name="value" >
+               <number>5</number>
+              </property>
+              <property name="sliderPosition" >
+               <number>5</number>
+              </property>
+              <property name="orientation" >
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="tab_2" >
+        <attribute name="title" >
+         <string>Llum1</string>
+        </attribute>
+        <widget class="QWidget" name="layoutWidget" >
+         <property name="geometry" >
+          <rect>
+           <x>20</x>
+           <y>10</y>
+           <width>291</width>
+           <height>161</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_2" >
+          <item>
+           <layout class="QGridLayout" name="gridLayout_4" >
+            <item row="0" column="0" >
+             <widget class="QLabel" name="label_11" >
+              <property name="text" >
+               <string>Red</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1" >
+             <widget class="QSlider" name="horizontalSliderRD_2" >
+              <property name="maximum" >
+               <number>255</number>
+              </property>
+              <property name="value" >
+               <number>255</number>
+              </property>
+              <property name="orientation" >
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0" >
+             <widget class="QLabel" name="label_12" >
+              <property name="text" >
+               <string>Green</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1" >
+             <widget class="QSlider" name="horizontalSliderGD_2" >
+              <property name="maximum" >
+               <number>255</number>
+              </property>
+              <property name="value" >
+               <number>255</number>
+              </property>
+              <property name="orientation" >
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="0" >
+             <widget class="QLabel" name="label_13" >
+              <property name="text" >
+               <string>Blue</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1" >
+             <widget class="QSlider" name="horizontalSliderBD_2" >
+              <property name="maximum" >
+               <number>255</number>
+              </property>
+              <property name="value" >
+               <number>255</number>
+              </property>
+              <property name="orientation" >
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="0" >
+             <widget class="QCheckBox" name="checkBox_2" >
+              <property name="text" >
+               <string>Activada</string>
+              </property>
+              <property name="checked" >
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="Altres" >
+        <attribute name="title" >
+         <string>Altres</string>
+        </attribute>
+        <widget class="QWidget" name="layoutWidget_6" >
+         <property name="geometry" >
+          <rect>
+           <x>20</x>
+           <y>40</y>
+           <width>271</width>
+           <height>91</height>
+          </rect>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_6" >
+          <item row="0" column="0" >
+           <widget class="QLabel" name="label_14" >
+            <property name="text" >
+             <string>Red</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1" >
+           <widget class="QSlider" name="horizontalSliderRD_4" >
+            <property name="maximum" >
+             <number>255</number>
+            </property>
+            <property name="value" >
+             <number>255</number>
+            </property>
+            <property name="orientation" >
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0" >
+           <widget class="QLabel" name="label_19" >
+            <property name="text" >
+             <string>Green</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1" >
+           <widget class="QSlider" name="horizontalSliderGD_4" >
+            <property name="maximum" >
+             <number>255</number>
+            </property>
+            <property name="value" >
+             <number>255</number>
+            </property>
+            <property name="orientation" >
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0" >
+           <widget class="QLabel" name="label_20" >
+            <property name="text" >
+             <string>Blue</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1" >
+           <widget class="QSlider" name="horizontalSliderBD_4" >
+            <property name="maximum" >
+             <number>255</number>
+            </property>
+            <property name="value" >
+             <number>255</number>
+            </property>
+            <property name="orientation" >
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0" >
+           <widget class="QCheckBox" name="checkBox_6" >
+            <property name="enabled" >
+             <bool>true</bool>
+            </property>
+            <property name="text" >
+             <string>Activada</string>
+            </property>
+            <property name="checked" >
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QComboBox" name="comboBoxLlums" >
+         <property name="geometry" >
+          <rect>
+           <x>20</x>
+           <y>10</y>
+           <width>72</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <item>
+          <property name="text" >
+           <string>Llum2</string>
+          </property>
+         </item>
+         <item>
+          <property name="text" >
+           <string>Llum3</string>
+          </property>
+         </item>
+         <item>
+          <property name="text" >
+           <string>Llum4</string>
+          </property>
+         </item>
+         <item>
+          <property name="text" >
+           <string>Llum5</string>
+          </property>
+         </item>
+         <item>
+          <property name="text" >
+           <string>Llum6</string>
+          </property>
+         </item>
+         <item>
+          <property name="text" >
+           <string>Llum7</string>
+          </property>
+         </item>
+        </widget>
+        <widget class="QWidget" name="layoutWidget_7" >
+         <property name="geometry" >
+          <rect>
+           <x>20</x>
+           <y>140</y>
+           <width>271</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_7" >
+          <item>
+           <widget class="QLabel" name="label_21" >
+            <property name="text" >
+             <string>Altura</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSlider" name="horizontalSlider_3" >
+            <property name="maximum" >
+             <number>50</number>
+            </property>
+            <property name="value" >
+             <number>25</number>
+            </property>
+            <property name="sliderPosition" >
+             <number>25</number>
+            </property>
+            <property name="orientation" >
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_3" >
+     <item>
+      <spacer name="horizontalSpacer_2" >
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0" >
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="CancelM" >
+       <property name="text" >
+        <string>Cancel Material</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_4" >
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0" >
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_8" >
+       <property name="text" >
+        <string>&amp;Amagar Material i Llums</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_3" >
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0" >
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="CancelLL" >
+       <property name="text" >
+        <string>Cancel Llum</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_6" >
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0" >
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout" >
+     <item>
+      <spacer name="horizontalSpacer" >
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0" >
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton" >
+       <property name="sizePolicy" >
+        <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text" >
+        <string>&amp;Exit</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11" />
+ <customwidgets>
+  <customwidget>
+   <class>GLWidget</class>
+   <extends>QWidget</extends>
+   <header>glwidget.h</header>
+   <container>1</container>
+   <slots>
+    <slot>LoadObject()</slot>
+    <slot>setSolidWireframe()</slot>
+    <slot>setCameraLight(bool)</slot>
+    <slot>LoadCharacter()</slot>
+   </slots>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>Principal</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>641</x>
+     <y>685</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>531</x>
+     <y>306</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>gLWidget</receiver>
+   <slot>LoadObject()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>640</x>
+     <y>35</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>372</x>
+     <y>172</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ButtonReset</sender>
+   <signal>clicked()</signal>
+   <receiver>gLWidget</receiver>
+   <slot>resetCamara()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>640</x>
+     <y>69</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>384</x>
+     <y>105</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioWire</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>PolygonLine(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>606</x>
+     <y>195</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>385</x>
+     <y>113</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioSolid</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>PolygonFill(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>606</x>
+     <y>173</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>387</x>
+     <y>146</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>Ortho(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>640</x>
+     <y>120</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>357</x>
+     <y>197</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>horizontalSliderRD</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>CanviMaterialR(int)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>65</x>
+     <y>484</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>57</x>
+     <y>393</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>horizontalSliderGD</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>CanviMaterialG(int)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>157</x>
+     <y>528</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>131</x>
+     <y>308</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>horizontalSliderBD</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>CanviMaterialB(int)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>157</x>
+     <y>565</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>231</x>
+     <y>377</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>horizontalSliderRS</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>CanviMaterialR(int)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>88</x>
+     <y>483</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>84</x>
+     <y>379</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>horizontalSliderGS</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>CanviMaterialG(int)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>121</x>
+     <y>494</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>146</x>
+     <y>398</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>horizontalSliderBS</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>CanviMaterialB(int)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>121</x>
+     <y>494</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>174</x>
+     <y>390</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>horizontalSliderRA</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>CanviMaterialR(int)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>113</x>
+     <y>492</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>113</x>
+     <y>348</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>horizontalSliderGA</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>CanviMaterialG(int)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>121</x>
+     <y>504</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>153</x>
+     <y>328</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>horizontalSliderBA</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>CanviMaterialB(int)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>121</x>
+     <y>504</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>198</x>
+     <y>374</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>horizontalSliderS</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>CanviShininess(int)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>141</x>
+     <y>544</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>173</x>
+     <y>380</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tabWidget</sender>
+   <signal>selected(QString)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>TabActual(QString)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>68</x>
+     <y>461</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>75</x>
+     <y>382</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_4</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>ActivarDesactivarPartsAmagades(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>640</x>
+     <y>98</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>392</x>
+     <y>273</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>gLWidget</sender>
+   <signal>inicializacionBarrasMatShi(int)</signal>
+   <receiver>horizontalSliderS</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>212</x>
+     <y>393</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>141</x>
+     <y>544</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>gLWidget</sender>
+   <signal>inicializacionBarrasMatAR(int)</signal>
+   <receiver>horizontalSliderRA</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>227</x>
+     <y>386</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>121</x>
+     <y>500</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>gLWidget</sender>
+   <signal>inicializacionBarrasMatAG(int)</signal>
+   <receiver>horizontalSliderGA</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>209</x>
+     <y>209</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>121</x>
+     <y>504</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>gLWidget</sender>
+   <signal>inicializacionBarrasMatAB(int)</signal>
+   <receiver>horizontalSliderBA</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>260</x>
+     <y>389</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>121</x>
+     <y>504</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>gLWidget</sender>
+   <signal>inicializacionBarrasMatSR(int)</signal>
+   <receiver>horizontalSliderRS</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>127</x>
+     <y>384</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>118</x>
+     <y>488</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>gLWidget</sender>
+   <signal>inicializacionBarrasMatSG(int)</signal>
+   <receiver>horizontalSliderGS</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>101</x>
+     <y>378</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>121</x>
+     <y>494</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>gLWidget</sender>
+   <signal>inicializacionBarrasMatSB(int)</signal>
+   <receiver>horizontalSliderBS</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>219</x>
+     <y>374</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>121</x>
+     <y>494</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>gLWidget</sender>
+   <signal>inicializacionBarrasMatDR(int)</signal>
+   <receiver>horizontalSliderRD</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>41</x>
+     <y>352</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>128</x>
+     <y>488</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>gLWidget</sender>
+   <signal>inicializacionBarrasMatDG(int)</signal>
+   <receiver>horizontalSliderGD</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>216</x>
+     <y>363</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>218</x>
+     <y>528</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>gLWidget</sender>
+   <signal>inicializacionBarrasMatDB(int)</signal>
+   <receiver>horizontalSliderBD</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>184</x>
+     <y>373</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>223</x>
+     <y>569</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_3</sender>
+   <signal>clicked()</signal>
+   <receiver>tabWidget</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>651</x>
+     <y>264</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>300</x>
+     <y>480</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_11</sender>
+   <signal>clicked()</signal>
+   <receiver>gLWidget</receiver>
+   <slot>LoadCub()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>487</x>
+     <y>318</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>393</x>
+     <y>304</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_9</sender>
+   <signal>clicked()</signal>
+   <receiver>gLWidget</receiver>
+   <slot>LoadWindow()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>487</x>
+     <y>81</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>374</x>
+     <y>65</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_13</sender>
+   <signal>clicked()</signal>
+   <receiver>gLWidget</receiver>
+   <slot>LoadDoor()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>487</x>
+     <y>160</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>381</x>
+     <y>129</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_12</sender>
+   <signal>clicked()</signal>
+   <receiver>gLWidget</receiver>
+   <slot>LoadPyramid()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>487</x>
+     <y>239</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>355</x>
+     <y>221</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_10</sender>
+   <signal>clicked()</signal>
+   <receiver>gLWidget</receiver>
+   <slot>LoadPrisma()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>487</x>
+     <y>397</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>367</x>
+     <y>368</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>horizontalSliderRD_2</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>CanviLlumR(int)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>453</x>
+     <y>480</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>397</x>
+     <y>381</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_2</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>ActivarDesactivarLlums(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>459</x>
+     <y>484</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>303</x>
+     <y>381</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>horizontalSliderGD_2</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>CanviLlumG(int)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>459</x>
+     <y>484</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>386</x>
+     <y>329</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>horizontalSliderBD_2</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>CanviLlumB(int)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>459</x>
+     <y>484</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>347</x>
+     <y>398</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Llums</sender>
+   <signal>selected(QString)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>TabActual(QString)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>367</x>
+     <y>432</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>378</x>
+     <y>356</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_3</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>ActivarDesactivarLlums(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>418</x>
+     <y>542</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>397</x>
+     <y>395</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>horizontalSliderRD_3</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>CanviLlumR(int)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>541</x>
+     <y>467</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>387</x>
+     <y>263</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>horizontalSliderGD_3</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>CanviLlumG(int)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>453</x>
+     <y>480</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>400</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>horizontalSliderBD_3</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>CanviLlumB(int)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>541</x>
+     <y>511</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>402</x>
+     <y>285</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>horizontalSlider_2</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>CanviLlumPos(int)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>513</x>
+     <y>585</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>393</x>
+     <y>295</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboBoxLlums</sender>
+   <signal>currentIndexChanged(QString)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>LlumSeleccionada(QString)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>416</x>
+     <y>465</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>390</x>
+     <y>386</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>horizontalSliderRD_4</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>CanviLlumR(int)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>533</x>
+     <y>500</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>409</x>
+     <y>387</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>horizontalSliderGD_4</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>CanviLlumG(int)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>453</x>
+     <y>510</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>409</x>
+     <y>346</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>horizontalSliderBD_4</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>CanviLlumB(int)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>533</x>
+     <y>544</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>407</x>
+     <y>364</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_6</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>ActivarDesactivarLlums(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>427</x>
+     <y>571</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>301</x>
+     <y>388</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>gLWidget</sender>
+   <signal>inicializacionBarrasLlumR(int)</signal>
+   <receiver>horizontalSliderRD_4</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>346</x>
+     <y>359</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>533</x>
+     <y>500</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>gLWidget</sender>
+   <signal>inicializacionBarrasLlumG(int)</signal>
+   <receiver>horizontalSliderGD_4</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>344</x>
+     <y>385</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>453</x>
+     <y>510</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>gLWidget</sender>
+   <signal>inicializacionBarrasLlumB(int)</signal>
+   <receiver>horizontalSliderBD_4</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>281</x>
+     <y>340</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>533</x>
+     <y>544</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CancelM</sender>
+   <signal>clicked()</signal>
+   <receiver>gLWidget</receiver>
+   <slot>CancelMaterial()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>178</x>
+     <y>654</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>114</x>
+     <y>384</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>horizontalSlider_3</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>gLWidget</receiver>
+   <slot>CanviLlumPos(int)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>448</x>
+     <y>591</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>350</x>
+     <y>392</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_8</sender>
+   <signal>clicked()</signal>
+   <receiver>CancelLL</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>352</x>
+     <y>644</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>568</x>
+     <y>654</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_8</sender>
+   <signal>clicked()</signal>
+   <receiver>CancelM</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>337</x>
+     <y>632</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>169</x>
+     <y>654</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_3</sender>
+   <signal>clicked()</signal>
+   <receiver>Llums</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>651</x>
+     <y>264</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>567</x>
+     <y>442</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_3</sender>
+   <signal>clicked()</signal>
+   <receiver>CancelLL</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>651</x>
+     <y>264</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>568</x>
+     <y>654</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_3</sender>
+   <signal>clicked()</signal>
+   <receiver>CancelM</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>651</x>
+     <y>264</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>134</x>
+     <y>654</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_8</sender>
+   <signal>clicked()</signal>
+   <receiver>Llums</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>358</x>
+     <y>631</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>447</x>
+     <y>601</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_8</sender>
+   <signal>clicked()</signal>
+   <receiver>pushButton_8</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>359</x>
+     <y>650</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>332</x>
+     <y>646</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_3</sender>
+   <signal>clicked()</signal>
+   <receiver>pushButton_8</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>651</x>
+     <y>264</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>353</x>
+     <y>648</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_8</sender>
+   <signal>clicked()</signal>
+   <receiver>tabWidget</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>311</x>
+     <y>649</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>267</x>
+     <y>604</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>gLWidget</sender>
+   <signal>inicializacioActDes(bool)</signal>
+   <receiver>checkBox_6</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>255</x>
+     <y>366</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>375</x>
+     <y>564</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

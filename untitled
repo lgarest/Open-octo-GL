@@ -1,0 +1,33 @@
+#if defined(_WIN32)
+    #include "glut.h"
+    #include <windows.h>
+#elif defined __APPLE__
+  #include <OpenGL/OpenGL.h>
+  #include <GLUT/glut.h>
+#else
+    #include <GL/gl.h>
+    #include <GL/freeglut.h>
+#endif
+using namespace std;
+
+#include <iostream>
+#include <math.h>
+
+void Display();
+
+void Display(){
+
+}
+
+int main(int argc, char** argv){
+    glutInit(&argc, (char **)argv);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
+    glutInitWindowSize(600, 600);
+    glutCreateWindow("IDI: Carrega objectes");
+
+    glutDisplayFunc(Display);
+
+    glutMainLoop();
+
+    return 0;
+}

@@ -292,27 +292,19 @@ void CameraPanPlane(){
 }
 
 void RotateCamera(float h, float v) {
-  viewerAzimuth += h; 
-  viewerZenith += v; 
-  GLfloat aux[3];
-  // aux[0] = cos(viewerZenith) * sin(viewerAzimuth); 
-  // aux[1] = -sin(viewerZenith);
-  // aux[2] = cos(viewerZenith) * sin(viewerAzimuth); 
+    viewerAzimuth += h; 
+    viewerZenith += v; 
+    GLfloat aux[3];
+    
+    aux[0] = sin(viewerZenith) * sin(viewerAzimuth);
+    aux[1] = cos(viewerZenith);
+    aux[2] = sin(viewerZenith) * cos(viewerAzimuth);
 
-  aux[0] = sin(viewerZenith) * sin(viewerAzimuth);
-  aux[1] = cos(viewerZenith);
-  aux[2] = sin(viewerZenith) * cos(viewerAzimuth);
-
-  // CR[0] = sin(viewerZenith) * sin(viewerAzimuth);
-  // CR[1] = cos(viewerZenith);
-  // CR[2] = sin(viewerZenith) * cos(viewerAzimuth);
-
-  // VRP[0] = OBS[0] + a + ViewerDistance;
-  // VRP[1] = OBS[1] + b + ViewerDistance;
-  // VRP[2] = OBS[2] + b + ViewerDistance;
     VRP[0] = OBS[0] + aux[0];
     VRP[1] = OBS[1] + aux[1];
     VRP[2] = OBS[2] + aux[2];
+
+
     GLfloat aux2[3];
 
     aux2[0] = (VRP[0] - OBS[0]);
@@ -320,35 +312,6 @@ void RotateCamera(float h, float v) {
     aux2[2] = (VRP[2] - OBS[2]);
 
     CameraPanPlane();
-    /*
-    void Camera::RotateCamera(float h, float v)
-{ 
-  hRadians += h; 
-  vRadians += v; 
-
-  cam_norm.x = cos(vRadians) * sin(hRadians); 
-  cam_norm.y = -sin(vRadians);
-  cam_norm.z = cos(vRadians) * sin(hRadians); 
-
-  cam_up.x = sin(vRadians) * sin(hRadians);
-  cam_up.y = cos(vRadians);
-  cam_up.z = sin(vRadians) * cos(hRadians);
-} 
-
-void Camera::Place()
-{ 
-  //position, camera target, up vector 
-  gluLookAt(cam_pos.x, cam_pos.y, cam_pos.z,
-            cam_pos.x+cam_norm.x, cam+pos.y+cam_norm.y, camp_pos.z+cam_norm.z,
-            cam_up.x, cam_up.y, cam_up.z); 
-} 
-    }
-
-    void Camera::Place() {
-    //position, camera target, up vector
-    gluLookAt(cam_position.x, cam_position.y, cam_position.z, cam_target.x, cam_target.y, cam_target.z, cam_up.x, cam_up.y, cam_up.z);
-    } */
-
 } 
 
 void ConfigCamera(){
@@ -389,7 +352,7 @@ void ConfigCamera(){
           GLdouble zFar
         );*/
         // glOrtho(0.0, WindowSize[0], WindowSize[1], -5.0, -5.0, 5.0);
-        glOrtho(-1.0, 1.0, -1.0, 1.0, 0.0, -1.0);
+          glOrtho(-1.0, 1.0, -1.0, 1.0, -1.0, 1.0);
     }
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     // Position and orient viewer.
@@ -498,33 +461,28 @@ void ResizeWindow(int w, int h) {
 void drawEarthAndMoon() {
     GLfloat MoonRevolution = EarthDaysTranspired / LUNAR_CYCLE;
     GLUquadricObj* quadro = gluNewQuadric();                            
-    gluQuadricNormals(quadro, GLU_SMOOTH);              
-    glEnable(GL_TEXTURE_2D);
+    glPushMatrix();
         glPushMatrix();
-            // glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-            glPushMatrix();
-                // EARTH
-                glRotatef(EARTH_INCLINATION, 0.0, 0.0, 1.0);
-                glRotatef( 360.0 * (EarthDaysTranspired/EARTH_ORBIT_DUR), 0.0, 1.0, 0.0);
-                glTranslatef(EARTH_ORBIT_RADIUS, 0.0, 0.0 );
-                glRotatef( 360.0 * CurrentEarthRotation, 0.0, 1.0, 0.0 );
-                //glRotatef( -90.0, 1.0, 0.0, 0.0 );
-                glColor3f(0,0,0.8); //blue
-                gluSphere(quadro, EARTH_RADIUS, 48, 48);
-            glPopMatrix();
-            // MOON
-            glRotatef(EARTH_INCLINATION, 0.0, 0.0, 1.0);
+            // EARTH
+//            glRotatef(EARTH_INCLINATION, 0.0, 0.0, 1.0);
             glRotatef( 360.0 * (EarthDaysTranspired/EARTH_ORBIT_DUR), 0.0, 1.0, 0.0);
-
             glTranslatef(EARTH_ORBIT_RADIUS, 0.0, 0.0 );
-            glRotatef( 360.0 * MoonRevolution, 0.0, 1.0, 0.0 );
-            glTranslatef( MOON_ORBIT_RADIUS  , 0.0, 0.0 );
-            // gluSphere(quadro, MOON_RADIUS, 48, 48);
-            glColor3f(1.0,1.0,1.0); //white
-            // display_model(m); //WIP: display homer rotating
-            gluSphere(quadro, MOON_RADIUS, 700, 700);
+            // glRotatef( 360.0 * CurrentEarthRotation, 0.0, 1.0, 0.0 );
+            glColor3f(0,0,0.8); //blue
+            gluSphere(quadro, EARTH_RADIUS, 48, 48);
         glPopMatrix();
-    glDisable(GL_TEXTURE_2D);
+        // MOON
+        // glRotatef(EARTH_INCLINATION, 0.0, 0.0, 1.0);
+        glRotatef( 360.0 * (EarthDaysTranspired/EARTH_ORBIT_DUR), 0.0, 1.0, 0.0);
+
+        glTranslatef(EARTH_ORBIT_RADIUS, 0.0, 0.0 );
+        glRotatef( 360.0 * MoonRevolution, 0.0, 1.0, 0.0 );
+        glTranslatef( MOON_ORBIT_RADIUS  , 0.0, 0.0 );
+        // gluSphere(quadro, MOON_RADIUS, 48, 48);
+        glColor3f(1.0,1.0,1.0); //white
+        // display_model(m); //WIP: display homer rotating
+        gluSphere(quadro, MOON_RADIUS, 700, 700);
+    glPopMatrix();
     gluDeleteQuadric(quadro);
 }
 

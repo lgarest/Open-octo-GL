@@ -1,0 +1,1517 @@
+GL Man Pages
+
+
+glBegin
+
+
+Name
+
+  glBegin, glEnd - delimit the vertices of a primitive or a group of like
+  primitives
+C Specification
+
+  void glBegin( GLenum mode )
+Parameters
+
+  mode  Specifies the primitive or primitives that will be created from
+    vertices presented between glBegin and the subsequent glEnd.  Ten
+    symbolic constants are accepted: GL_POINTS, GL_LINES, GL_LINE_STRIP,
+    GL_LINE_LOOP, GL_TRIANGLES, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN,
+    GL_QUADS, GL_QUAD_STRIP, and GL_POLYGON.
+C Specification
+
+  void glEnd( void )
+Description
+
+  glBegin and glEnd delimit the vertices that define a primitive or a group
+  of like primitives.  glBegin accepts a single argument that specifies which
+  of ten ways the vertices are interpreted.  Taking n as an integer count
+  starting at one, and N as the total number of vertices specified, the
+  interpretations are as follows:
+
+  GL_POINTS Treats each vertex as a single point.  Vertex n defines point n.
+        N points are drawn.
+
+  GL_LINES  Treates each pair of vertices as an independent line segment.
+        Vertices 2n-1 and 2n define line n.  N/2 lines are drawn.
+
+  GL_LINE_STRIP
+        Draws a connected group of line segments from the first vertex to
+        the last.  Vertices n and n+1 define line n.  N-1 lines are
+        drawn.
+
+  GL_LINE_LOOP
+        Draws a connected group of line segments from the first vertex to
+        the last, then back to the first.  Vertices n and n+1 define line
+        n.  The last line, however, is defined by vertices N and 1.  N
+        lines are drawn.
+
+  GL_TRIANGLES
+        Treates each triplet of vertices as an independent triangle.
+        Vertices 3n-2, 3n-1, and 3n define triangle n.  N/3 triangles are
+        drawn.
+
+  GL_TRIANGLE_STRIP
+        Draws a connected group of triangles.  One triangle is defined
+        for each vertex presented after the first two vertices.  For odd
+        n, vertices n, n+1, and n+2 define triangle n.  For even n,
+        vertices n+1, n, and n+2 define triangle n.  N-2 triangles are
+        drawn.
+
+  GL_TRIANGLE_FAN
+        Draws a connected group of triangles.  One triangle is defined
+        for each vertex presented after the first two vertices.  Vertices
+        1, n+1, and n+2 define triangle n.  N-2 triangles are drawn.
+
+  GL_QUADS  Treats each group of four vertices as an independent
+        quadrilateral.  Vertices 4n-3, 4n-2, 4n-1, and 4n define
+        quadrilateral n.  N/4 quadrilaterals are drawn.
+
+  GL_QUAD_STRIP
+        Draws a connected group of quadrilaterals.  One quadrilateral is
+        defined for each pair of vertices presented after the first pair.
+        Vertices 2n-1, 2n, 2n+2, and 2n+1 define quadrilateral n.  N/2-1
+        quadrilaterals are drawn.  Note that the order in which vertices
+        are used to construct a quadrilateral from strip data is
+        different from that used with independent data.
+
+  GL_POLYGON
+        Draws a single, convex polygon.  Vertices 1 through N define this
+        polygon.
+
+  Only a subset of GL commands can be used between glBegin and glEnd.  The
+  commands are glVertex, glColor, glIndex, glNormal, glTexCoord, glEvalCoord,
+  glEvalPoint, glMaterial, and glEdgeFlag.  Also, it is acceptable to use
+  glCallList or glCallLists to execute display lists that include only the
+  preceding commands.  If any other GL command is executed between glBegin
+  and glEnd, the error flag is set and the command is ignored.
+
+  Regardless of the value chosen for mode, there is no limit to the number of
+  vertices that can be defined between glBegin and glEnd.  Lines, triangles,
+  quadrilaterals, and polygons that are incompletely specified are not drawn.
+  Incomplete specification results when either too few vertices are provided
+  to specify even a single primitive or when an incorrect multiple of
+  vertices is specified. The incomplete primitive is ignored; the rest are
+  drawn.
+
+  The minimum specification of vertices for each primitive is as follows: 1
+  for a point, 2 for a line, 3 for a triangle, 4 for a quadrilateral, and 3
+  for a polygon.  Modes that require a certain multiple of vertices are
+  GL_LINES (2), GL_TRIANGLES (3), GL_QUADS (4), and GL_QUAD_STRIP (2).
+glCallList
+
+Name
+
+  glCallList - execute a display list
+C Specification
+
+  void glCallList( GLuint list )
+Parameters
+
+  list  Specifies the integer name of the display list to be executed.
+Description
+
+  glCallList causes the named display list to be executed.  The commands
+  saved in the display list are executed in order, just as if they were
+  called without using a display list.  If list has not been defined as a
+  display list, glCallList is ignored.
+
+  glCallList can appear inside a display list.  To avoid the possibility of
+  infinite recursion resulting from display lists calling one another, a
+  limit is placed on the nesting level of display lists during display-list
+  execution.  This limit is at least 64, and it depends on the
+  implementation.
+
+  GL state is not saved and restored across a call to glCallList.  Thus,
+  changes made to GL state during the execution of a display list remain
+  after execution of the display list is completed.  Use glPushMatrix, and              glPopMatrix to preserve GL state across glCallList calls.
+
+glClearColor
+
+
+Name
+
+  glClearColor - specify clear values for the color buffers
+C Specification
+
+  void glClearColor( GLclampf red,
+             GLclampf green,
+             GLclampf blue,
+             GLclampf alpha )
+Parameters
+
+  red, green, blue, alpha
+            Specify the red, green, blue, and alpha values used
+            when the color buffers are cleared.  The default
+            values are all zero.
+Description
+
+  glClearColor specifies the red, green, blue, and alpha values used by
+  glClear to clear the color buffers.  Values specified by glClearColor are
+  clamped to the range [0,1].
+Errors
+
+  GL_INVALID_OPERATION is generated if glClearColor is executed between the
+  execution of glBegin and the corresponding execution of glEnd.
+ 
+
+
+glClear
+
+
+Name
+
+  glClear - clear buffers to preset values
+C Specification
+
+  void glClear( GLbitfield mask )
+Parameters
+
+  mask  Bitwise OR of masks that indicate the buffers to be cleared.  The
+    four masks are GL_COLOR_BUFFER_BIT, GL_DEPTH_BUFFER_BIT,
+    GL_ACCUM_BUFFER_BIT, and GL_STENCIL_BUFFER_BIT.
+Description
+
+  glClear sets the bitplane area of the window to values previously selected
+  by glClearColor, glClearIndex, glClearDepth, glClearStencil, and
+  glClearAccum.  Multiple color buffers can be cleared simultaneously by
+  selecting more than one buffer at a time using glDrawBuffer.
+
+  The pixel ownership test, the scissor test, dithering, and the buffer
+  writemasks affect the operation of glClear.  The scissor box bounds the
+  cleared region.  Alpha function, blend function, logical operation,
+  stenciling, texture mapping, and z-buffering are ignored by glClear.
+
+  glClear takes a single argument that is the bitwise OR of several values
+  indicating which buffer is to be cleared.
+
+  The values are as follows:
+
+  GL_COLOR_BUFFER_BIT         Indicates the buffers currently enabled for
+                  color  writing.
+
+  GL_DEPTH_BUFFER_BIT         Indicates the depth buffer.
+
+  GL_ACCUM_BUFFER_BIT         Indicates the accumulation buffer.
+
+  GL_STENCIL_BUFFER_BIT       Indicates the stencil buffer.
+
+  The value to which each buffer is cleared depends on the setting of the
+  clear value for that buffer.
+ 
+
+
+glClearDepth
+
+
+Name
+
+  glClearDepth - specify the clear value for the depth buffer
+C Specification
+
+  void glClearDepth( GLclampd depth )
+Parameters
+
+  depth  Specifies the depth value used when the depth buffer is cleared.
+Description
+
+  glClearDepth specifies the depth value used by glClear to clear the depth
+  buffer.  Values specified by glClearDepth are clamped to the range [0,1].
+
+glColor
+
+
+Name
+
+  glColor3b, glColor3d, glColor3f, glColor3i, glColor3s, glColor3ub,
+  glColor3ui, glColor3us, glColor4b, glColor4d, glColor4f, glColor4i,
+  glColor4s, glColor4ub, glColor4ui, glColor4us, glColor3bv, glColor3dv,
+  glColor3fv, glColor3iv, glColor3sv, glColor3ubv, glColor3uiv, glColor3usv,
+  glColor4bv, glColor4dv, glColor4fv, glColor4iv, glColor4sv, glColor4ubv,
+  glColor4uiv, glColor4usv - set the current color
+C Specification
+
+  void glColor3b( GLbyte red,
+          GLbyte green,
+          GLbyte blue )
+  void glColor3d( GLdouble red,
+          GLdouble green,
+          GLdouble blue )
+  void glColor3f( GLfloat red,
+          GLfloat green,
+          GLfloat blue )
+  void glColor3i( GLint red,
+          GLint green,
+          GLint blue )
+  void glColor3s( GLshort red,
+          GLshort green,
+          GLshort blue )
+  void glColor3ub( GLubyte red,
+           GLubyte green,
+           GLubyte blue )
+  void glColor3ui( GLuint red,
+           GLuint green,
+           GLuint blue )
+  void glColor3us( GLushort red,
+           GLushort green,
+           GLushort blue )
+  void glColor4b( GLbyte red,
+          GLbyte green,
+          GLbyte blue,
+          GLbyte alpha )
+  void glColor4d( GLdouble red,
+          GLdouble green,
+          GLdouble blue,
+          GLdouble alpha )
+  void glColor4f( GLfloat red,
+          GLfloat green,
+          GLfloat blue,
+          GLfloat alpha )
+  void glColor4i( GLint red,
+          GLint green,
+          GLint blue,
+          GLint alpha )
+  void glColor4s( GLshort red,
+          GLshort green,
+          GLshort blue,
+          GLshort alpha )
+  void glColor4ub( GLubyte red,
+           GLubyte green,
+           GLubyte blue,
+           GLubyte alpha )
+  void glColor4ui( GLuint red,
+           GLuint green,
+           GLuint blue,
+           GLuint alpha )
+  void glColor4us( GLushort red,
+           GLushort green,
+           GLushort blue,
+           GLushort alpha )
+Parameters
+
+  red, green, blue
+          Specify new red, green, and blue values for the current
+          color.
+
+  alpha       Specifies a new alpha value for the current color.
+          Included only in the four-argument glColor4 command.
+C Specification
+
+  void glColor3bv( const GLbyte *v )
+  void glColor3dv( const GLdouble *v )
+  void glColor3fv( const GLfloat *v )
+  void glColor3iv( const GLint *v )
+  void glColor3sv( const GLshort *v )
+  void glColor3ubv( const GLubyte *v )
+  void glColor3uiv( const GLuint *v )
+  void glColor3usv( const GLushort *v )
+  void glColor4bv( const GLbyte *v )
+  void glColor4dv( const GLdouble *v )
+  void glColor4fv( const GLfloat *v )
+  void glColor4iv( const GLint *v )
+  void glColor4sv( const GLshort *v )
+  void glColor4ubv( const GLubyte *v )
+  void glColor4uiv( const GLuint *v )
+  void glColor4usv( const GLushort *v )
+Parameters
+
+  v    Specifies a pointer to an array that contains red, green, blue, and
+       (sometimes) alpha values.
+Description
+
+  The GL stores both a current single-valued color index and a current four-
+  valued RGBA color.  glColor sets a new four-valued RGBA color.  glColor has
+  two major variants: glColor3 and glColor4.  glColor3 variants specify new
+  red, green, and blue values explicitly, and set the current alpha value to
+  1.0 implicitly.  glColor4 variants specify all four color components
+  explicitly.
+
+  glColor3b, glColor4b, glColor3s, glColor4s, glColor3i, and glColor4i take
+  three or four signed byte, short, or long integers as arguments.  When v is
+  appended to the name, the color commands can take a pointer to an array of
+  such values.
+
+  Current color values are stored in floating-point format, with unspecified
+  mantissa and exponent sizes.  Unsigned integer color components, when
+  specified, are linearly mapped to floating-point values such that the
+  largest representable value maps to 1.0 (full intensity), and zero maps to
+  0.0 (zero intensity).  Signed integer color components, when specified, are
+  linearly mapped to floating-point values such that the most positive
+  representable value maps to 1.0, and the most negative representable value
+  maps to -1.0.  Floating-point values are mapped directly.
+
+
+  Neither floating-point nor signed integer values are clamped to the range
+  [0,1] before updating the current color.  However, color components are
+  clamped to this range before they are interpolated or written into a color
+  buffer.
+
+glEnable
+
+
+Name
+
+  glEnable, glDisable - enable or disable GL capabilities
+C Specification
+
+  void glEnable( GLenum cap )
+Parameters
+
+  cap  Specifies a symbolic constant indicating a GL capability.
+C Specification
+
+  void glDisable( GLenum cap )
+Parameters
+
+  cap  Specifies a symbolic constant indicating a GL capability.
+Description
+
+  glEnable and glDisable enable and disable various capabilities.  Use
+  glIsEnabled or glGet to determine the current setting of any capability.
+
+  Both glEnable and glDisable take a single argument, cap, which can assume
+  one of the following values:
+
+
+  GL_DEPTH_TEST        If enabled, do depth comparisons and update the
+               depth buffer.
+
+  GL_LIGHTi        If enabled, include light i in the evaluation of
+               the lighting equation.  See glLightModel and
+               glLight.
+
+  GL_LIGHTING          If enabled, use the current lighting parameters to
+               compute the vertex color or index.  Otherwise,
+               simply associate the current color or index with
+               each vertex.  
+
+glNewList
+
+
+Name
+
+  glNewList, glEndList - create or replace a display list
+C Specification
+
+  void glNewList( GLuint list,
+          GLenum mode )
+Parameters
+
+  list  Specifies the display list name.
+
+  mode  Specifies the compilation mode, which can be GL_COMPILE or
+    GL_COMPILE_AND_EXECUTE.
+C Specification
+
+  void glEndList( void )
+Description
+
+  Display lists are groups of GL commands that have been stored for
+  subsequent execution.  The display lists are created with glNewList.  All
+  subsequent commands are placed in the display list, in the order issued,
+  until glEndList is called.
+
+  glNewList has two arguments.  The first argument, list, is a positive
+  integer that becomes the unique name for the display list.  Names can be
+  created and reserved with glGenLists and tested for uniqueness with
+  glIsList.  The second argument, mode, is a symbolic constant that can
+  assume one of two values:
+
+  GL_COMPILE          Commands are merely compiled.
+
+  GL_COMPILE_AND_EXECUTE
+              Commands are executed as they are compiled into the
+              display list.
+
+  Certain commands are not compiled into the display list, but are executed
+  immediately, regardless of the display-list mode.  
+
+  When glEndList is encountered, the display-list definition is completed by
+  associating the list with the unique name list (specified in the glNewList
+  command). If a display list with name list already exists, it is replaced
+  only when glEndList is called.
+
+glFlush
+
+
+Name
+
+  glFlush - force execution of GL commands in finite time
+C Specification
+
+  void glFlush( void )
+Description
+
+  Different GL implementations buffer commands in several different
+  locations, including network buffers and the graphics accelerator itself.
+  glFlush empties all of these buffers, causing all issued commands to be
+  executed as quickly as they are accepted by the actual rendering engine.
+  Though this execution may not be completed in any particular time period,
+  it does complete in finite time.
+
+  Because any GL program might be executed over a network, or on an
+  accelerator that buffers commands, all programs should call glFlush
+  whenever they count on having all of their previously issued commands
+  completed.  For example, call glFlush before waiting for user input that
+  depends on the generated image.
+ 
+
+
+glFrustum
+
+
+Name
+
+  glFrustum - multiply the current matrix by a perspective matrix
+C Specification
+
+  void glFrustum( GLdouble left,
+          GLdouble right,
+          GLdouble bottom,
+          GLdouble top,
+          GLdouble near,
+          GLdouble far )
+Parameters
+
+  left, right Specify the coordinates for the left and right vertical
+          clipping planes.
+
+  bottom, top Specify the coordinates for the bottom and top horizontal
+          clipping planes.
+
+  near, far   Specify the distances to the near and far depth clipping
+          planes.  Both distances must be positive.
+Description
+
+  glFrustum describes a perspective matrix that produces a perspective
+  projection.  (left, bottom, -near) and (right, top,  -near) specify the
+  points on the near clipping plane that are mapped to the lower left and
+  upper right corners of the window, respectively, assuming that the eye is
+  located at (0, 0, 0).  -far specifies the location of the far clipping
+  plane.  Both near and far must be positive.  The corresponding matrix is
+
+           |                       |
+           |    2�near                 |
+                   |  ----------                           |
+           |  right-left       0       A       0   |
+           |                       |
+           |      0     2�near     B       0   |
+           |              ----------               |
+           |          top-bottom           |
+           |      0        0       C       D   |
+           |                       |
+           |      0        0       -1      0   |
+
+                    right+left
+                A = ----------
+                    right-left
+
+                    top+bottom
+                B = ----------
+                    top-bottom
+
+                      far+near
+                C = - --------
+                      far-near
+
+                      2�far�near
+                D = - ----------
+                       far-near
+
+
+  The current matrix is multiplied by this matrix with the result replacing
+  the current matrix.  That is, if M is the current matrix and F is the
+  frustum perspective matrix, then M is replaced with M�F.
+
+  Use glPushMatrix and glPopMatrix to save and restore the current matrix
+  stack.
+ 
+
+
+glGet
+
+
+Name
+
+  glGetBooleanv, glGetDoublev, glGetFloatv, glGetIntegerv - return the value
+  or values of a selected parameter
+C Specification
+
+  void glGetBooleanv( GLenum pname,
+              GLboolean *params )
+C Specification
+
+  void glGetDoublev( GLenum pname,
+             GLdouble *params )
+C Specification
+
+  void glGetFloatv( GLenum pname,
+            GLfloat *params )
+C Specification
+
+  void glGetIntegerv( GLenum pname,
+              GLint *params )
+Parameters
+
+  pname   Specifies the parameter value to be returned.  The symbolic
+      constants in the list below are accepted.
+
+  params  Returns the value or values of the specified parameter.
+Description
+
+  These four commands return values for simple state variables in GL. pname
+  is a symbolic constant indicating the state variable to be returned, and
+  params is a pointer to an array of the indicated type in which to place the
+  returned data.
+
+  Type conversion is performed if params has a different type than the state
+  variable value being requested.  If glGetBooleanv is called, a floating-
+  point or integer value is converted to GL_FALSE if and only if it is zero.
+  Otherwise, it is converted to GL_TRUE.  If glGetIntegerv is called, Boolean
+  values are returned as GL_TRUE or GL_FALSE, and most floating-point values
+  are rounded to the nearest integer value.  Floating-point colors and
+  normals, however, are returned with a linear mapping that maps 1.0 to the
+  most positive representable integer value, and -1.0 to the most negative
+  representable integer value.  If glGetFloatv or glGetDoublev is called,
+  Boolean values are returned as GL_TRUE or GL_FALSE, and integer values are
+  converted to floating-point values.
+
+  The following symbolic constants are accepted by pname:
+
+  
+  GL_DEPTH_CLEAR_VALUE     params returns one value, the value that is used
+               to clear the depth buffer.  Integer values, if
+               requested, are linearly mapped from the internal
+               floating-point representation such that 1.0
+               returns the most positive representable integer
+               value, and -1.0 returns the most negative
+               representable integer value. 
+
+  GL_DEPTH_FUNC        params returns one value, the symbolic constant
+               that indicates the depth comparison function.  
+
+  GL_DEPTH_TEST        params returns a single Boolean value indicating
+               whether depth testing of fragments is enabled.
+            
+  GL_LIGHTi        params returns a single Boolean value indicating
+               whether the specified light is enabled.  See
+               glLight.
+
+  GL_LIGHTING          params returns a single Boolean value indicating
+               whether lighting is enabled. 
+
+  GL_MODELVIEW_MATRIX      params returns sixteen values: the modelview
+               matrix on the top of the modelview matrix stack.
+               See glPushMatrix.
+
+  GL_MODELVIEW_STACK_DEPTH params returns one value, the number of matrices
+               on the modelview matrix stack.  See glPushMatrix.
+
+  GL_NAME_STACK_DEPTH      params returns one value, the number of names on
+               the selection name stack.  See glPushMatrix.
+
+  GL_PROJECTION_MATRIX     params returns sixteen values: the projection
+               matrix on the top of the projection matrix stack.
+               See glPushMatrix.
+
+  GL_PROJECTION_STACK_DEPTH
+               params returns one value, the number of matrices
+               on the projection matrix stack.  See glPushMatrix.
+
+  GL_RENDER_MODE       params returns one value, a symbolic constant
+               indicating whether the GL is in render, select, or
+               feedback mode.  See glRenderMode.
+
+  GL_RGBA_MODE         params returns a single Boolean value indicating
+               whether the GL is in RGBA mode (true) or color
+               index mode (false).  See glColor.
+
+glInitNames
+
+
+Name
+
+  glInitNames - initialize the name stack
+C Specification
+
+  void glInitNames( void )
+Description
+
+  The name stack is used during selection mode to allow sets of rendering
+  commands to be uniquely identified.  It consists of an ordered set of
+  unsigned integers.  glInitNames causes the name stack to be initialized to
+  its default empty state.
+
+  The name stack is always empty while the render mode is not GL_SELECT.
+  Calls to glInitNames while the render mode is not GL_SELECT are ignored.
+ 
+
+
+glLight
+
+
+Name
+
+  glLightf, glLighti, glLightfv, glLightiv - set light source parameters
+C Specification
+
+  void glLightf( GLenum light,
+         GLenum pname,
+         GLfloat param )
+  void glLighti( GLenum light,
+         GLenum pname,
+         GLint param )
+Parameters
+
+  light   Specifies a light.  The number of lights is depends on the
+      implementation, but at least eight lights are supported.  They are
+      identified by symbolic names of the form GL_LIGHTi where 0 <= i <
+      GL_MAX_LIGHTS.
+
+  pname   Specifies a single-valued light source parameter for light.
+      GL_SPOT_EXPONENT, GL_SPOT_CUTOFF, GL_CONSTANT_ATTENUATION,
+      GL_LINEAR_ATTENUATION , and GL_QUADRATIC_ATTENUATION are accepted.
+
+  param   Specifies the value that parameter pname of light source light will
+      be set to.
+C Specification
+
+  void glLightfv( GLenum light,
+          GLenum pname,
+          const GLfloat *params )
+  void glLightiv( GLenum light,
+          GLenum pname,
+          const GLint *params )
+Parameters
+
+  light
+       Specifies a light.  The number of lights depends on the
+       implementation, but at least eight lights are supported.  They are
+       identified by symbolic names of the form GL_LIGHTi where 0 <= i <
+       GL_MAX_LIGHTS.
+
+  pname
+       Specifies a light source parameter for light.  GL_AMBIENT, GL_DIFFUSE,
+       GL_SPECULAR, GL_POSITION, GL_SPOT_DIRECTION, GL_SPOT_EXPONENT,
+       GL_SPOT_CUTOFF, GL_CONSTANT_ATTENUATION, GL_LINEAR_ATTENUATION, and
+       GL_QUADRATIC_ATTENUATION are accepted.
+
+  params
+       Specifies a pointer to the value or values that parameter pname of
+       light source light will be set to.
+Description
+
+  glLight sets the values of individual light source parameters.  light names
+  the light and is a symbolic name of the form GL_LIGHTi, where 0 <= i <
+  GL_MAX_LIGHTS.  pname specifies one of ten light source parameters, again
+  by symbolic name.  params is either a single value or a pointer to an array
+  that contains the new values.
+
+  Lighting calculation is enabled and disabled using glEnable and glDisable
+  with argument GL_LIGHTING.  When lighting is enabled, light sources that
+  are enabled contribute to the lighting calculation.  Light source i is
+  enabled and disabled using glEnable and glDisable with argument GL_LIGHTi.
+
+  The ten light parameters are as follows:
+
+  GL_AMBIENT          params contains four integer or floating-point values
+              that specify the ambient RGBA intensity of the light.
+              Integer values are mapped linearly such that the most
+              positive representable value maps to 1.0, and the most
+              negative representable value maps to -1.0.  Floating-
+              point values are mapped directly.  Neither integer nor
+              floating-point values are clamped.  The default ambient
+              light intensity is (0.0, 0.0, 0.0, 1.0).
+
+  GL_DIFFUSE          params contains four integer or floating-point values
+              that specify the diffuse RGBA intensity of the light.
+              Integer values are mapped linearly such that the most
+              positive representable value maps to 1.0, and the most
+              negative representable value maps to -1.0.  Floating-
+              point values are mapped directly.  Neither integer nor
+              floating-point values are clamped.  The default diffuse
+              intensity is (0.0, 0.0, 0.0, 1.0) for all lights other
+              than light zero.  The default diffuse intensity of
+              light zero is (1.0, 1.0, 1.0, 1.0).
+
+  GL_SPECULAR         params contains four integer or floating-point values
+              that specify the specular RGBA intensity of the light.
+              Integer values are mapped linearly such that the most
+              positive representable value maps to 1.0, and the most
+              negative representable value maps to -1.0.  Floating-
+              point values are mapped directly.  Neither integer nor
+              floating-point values are clamped.  The default
+              specular intensity is (0.0, 0.0, 0.0, 1.0) for all
+              lights other than light zero.  The default specular
+              intensity of light zero is (1.0, 1.0, 1.0, 1.0).
+
+  GL_POSITION         params contains four integer or floating-point values
+              that specify the position of the light in homogeneous
+              object coordinates.  Both integer and floating-point
+              values are mapped directly.  Neither integer nor
+              floating-point values are clamped.
+
+              The position is transformed by the modelview matrix
+              when glLight is called (just as if it were a point),
+              and it is stored in eye coordinates.  If the w
+              component of the position is 0.0, the light is treated
+              as a directional source.  Diffuse and specular lighting
+              calculations take the light's direction, but not its
+              actual position, into account, and attenuation is
+              disabled.  Otherwise, diffuse and specular lighting
+              calculations are based on the actual location of the
+              light in eye coordinates, and attenuation is enabled.
+              The default position is (0,0,1,0); thus, the default
+              light source is directional, parallel to, and in the
+              direction of the -z axis.
+
+glLineWidth
+
+Name
+
+  glLineWidth - specify the width of rasterized lines
+C Specification
+
+  void glLineWidth( GLfloat width )
+Parameters
+
+  width  Specifies the width of rasterized lines.  The default is 1.0.
+Description
+
+  glLineWidth specifies the rasterized width of both aliased and antialiased
+  lines.  Using a line width other than 1.0 has different effects, depending
+  on whether line antialiasing is enabled.  Line antialiasing is controlled
+  by calling glEnable and glDisable with argument GL_LINE_SMOOTH.
+
+  If line antialiasing is disabled, the actual width is determined by
+  rounding the supplied width to the nearest integer.  (If the rounding
+  results in the value 0, it is as if the line width were 1.) If |dx| >= |dy|,
+  i pixels are filled in each column that is rasterized, where i is the
+  rounded value of width.  Otherwise, i pixels are filled in each row that is
+  rasterized.
+
+  If antialiasing is enabled, line rasterization produces a fragment for each
+  pixel square that intersects the region lying within the rectangle having
+  width equal to the current line width, length equal to the actual length of
+  the line, and centered on the mathematical line segment.  The coverage
+  value for each fragment is the window coordinate area of the intersection
+  of the rectangular region with the corresponding pixel square.  This value
+  is saved and used in the final rasterization step.
+
+  Not all widths can be supported when line antialiasing is enabled. If an
+  unsupported width is requested, the nearest supported width is used.  Only
+  width 1.0 is guaranteed to be supported; others depend on the
+  implementation.  The range of supported widths and the size difference
+  between supported widths within the range can be queried by calling glGet
+  with arguments GL_LINE_WIDTH_RANGE and GL_LINE_WIDTH_GRANULARITY.
+
+glLoadIdentity
+
+
+Name
+
+  glLoadIdentity - replace the current matrix with the identity matrix
+C Specification
+
+  void glLoadIdentity( void )
+Description
+
+  glLoadIdentity replaces the current matrix with the identity matrix.  It is
+  semantically equivalent to calling glLoadMatrix with the identity matrix
+
+
+                  | 1   0   0   0  |
+                  |            |
+                  | 0   1   0   0  |
+                  | 0   0   1   0  |
+                  |            |
+                  | 0   0   0   1  |
+
+  but in some cases it is more efficient.
+ 
+
+
+glLoadName
+
+
+Name
+
+  glLoadName - load a name onto the name stack
+C Specification
+
+  void glLoadName( GLuint name )
+Parameters
+
+  name  Specifies a name that will replace the top value on the name stack.
+Description
+
+  The name stack is used during selection mode to allow sets of rendering
+  commands to be uniquely identified.  It consists of an ordered set of
+  unsigned integers.  glLoadName causes name to replace the value on the top
+  of the name stack, which is initially empty.
+
+  The name stack is always empty while the render mode is not GL_SELECT.
+  Calls to glLoadName while the render mode is not GL_SELECT are ignored.
+
+glMatrixMode
+
+
+Name
+
+  glMatrixMode - specify which matrix is the current matrix
+C Specification
+
+  void glMatrixMode( GLenum mode )
+Parameters
+
+  mode  Specifies which matrix stack is the target for subsequent matrix
+    operations.  Three values are accepted: GL_MODELVIEW, GL_PROJECTION,
+    and GL_TEXTURE.  The default value is GL_MODELVIEW.
+Description
+
+  glMatrixMode sets the current matrix mode.  mode can assume one of three
+  values:
+
+  GL_MODELVIEW        Applies subsequent matrix operations to the modelview
+              matrix stack.
+
+  GL_PROJECTION       Applies subsequent matrix operations to the projection
+              matrix stack.
+
+ 
+
+glOrtho
+
+
+Name
+
+  glOrtho - multiply the current matrix by an orthographic matrix
+C Specification
+
+  void glOrtho( GLdouble left,
+        GLdouble right,
+        GLdouble bottom,
+        GLdouble top,
+        GLdouble near,
+        GLdouble far )
+Parameters
+
+  left, right Specify the coordinates for the left and right vertical
+          clipping planes.
+
+  bottom, top Specify the coordinates for the bottom and top horizontal
+          clipping planes.
+
+  near, far   Specify the distances to the nearer and farther depth clipping
+          planes.  These distances are negative if the plane is to be
+          behind the viewer.
+Description
+
+  glOrtho describes a perspective matrix that produces a parallel projection.
+  (left, bottom,  -near) and (right, top,  -near) specify the points on the
+  near clipping plane that are mapped to the lower left and upper right
+  corners of the window, respectively, assuming that the eye is located at
+  (0, 0, 0).  -far specifies the location of the far clipping plane.  Both
+  near and far can be either positive or negative.  The corresponding matrix
+  is
+
+            |     2                       |
+            |----------      0          0      t  |
+            |right-left             x |
+            |                     |
+            |             2           |
+            |    0       ---------- 0      t  |
+            |        top-bottom         y |
+            |                                     |
+            |                     |
+            |    0       0          -2        |
+            |                        --------  t  |
+            |                far-near   z |
+            |                                     |
+            |    0       0      0      1  |
+
+  where
+                          right+left
+                   t  = - ----------
+                x     right-left
+
+                      top+bottom
+                   t  = - ----------
+                y     top-bottom
+
+                       far+near
+                t  = - --------
+                 z     far-near
+
+  The current matrix is multiplied by this matrix with the result replacing
+  the current matrix.  That is, if M is the current matrix and O is the ortho
+  matrix, then M is replaced with M � O.
+
+  Use glPushMatrix and glPopMatrix to save and restore the current matrix
+  stack.
+glPointSize
+
+ 
+
+Name
+
+  glPointSize - specify the diameter of rasterized points
+C Specification
+
+  void glPointSize( GLfloat size )
+Parameters
+
+  size  Specifies the diameter of rasterized points.  The default is 1.0.
+Description
+
+  glPointSize specifies the rasterized diameter of both aliased and
+  antialiased points.  Using a point size other than 1.0 has different
+  effects, depending on whether point antialiasing is enabled.  Point
+  antialiasing is controlled by calling glEnable and glDisable with argument
+  GL_POINT_SMOOTH.
+
+  If point antialiasing is disabled, the actual size is determined by
+  rounding the supplied size to the nearest integer.  (If the rounding
+  results in the value 0, it is as if the point size were 1.) If the rounded
+  size is odd, then the center point (x, y) of the pixel fragment that
+  represents the point is computed as
+
+            ( floor(x )+.5, floor(y )+.5 )
+                 w             w
+
+  where w subscripts indicate window coordinates.  All pixels that lie within
+  the square grid of the rounded size centered at (x, y) make up the
+  fragment.  If the size is even, the center point is
+
+            ( floor(x +.5), floor(y +.5) )
+                 w             w
+
+  and the rasterized fragment's centers are the half-integer window
+  coordinates within the square of the rounded size centered at (x, y).  All
+  pixel fragments produced in rasterizing a nonantialiased point are assigned
+  the same associated data, that of the vertex corresponding to the point.
+
+  If antialiasing is enabled, then point rasterization produces a fragment
+  for each pixel square that intersects the region lying within the circle
+  having diameter equal to the current point size and centered at the point's
+  (x , y ).  The coverage value for each fragment is the window coordinate
+    w   w
+  area of the intersection of the circular region with the corresponding
+  pixel square.  This value is saved and used in the final rasterization
+  step. The data associated with each fragment is the data associated with
+  the point being rasterized.
+
+  Not all sizes are supported when point antialiasing is enabled. If an
+  unsupported size is requested, the nearest supported size is used.  Only
+  size 1.0 is guaranteed to be supported; others depend on the
+  implementation.  The range of supported sizes and the size difference
+  between supported sizes within the range can be queried by  calling glGet
+  with arguments GL_POINT_SIZE_RANGE and GL_POINT_SIZE_GRANULARITY.
+
+glPushMatrix
+
+
+Name
+
+  glPushMatrix, glPopMatrix - push and pop the current matrix stack
+C Specification
+
+  void glPushMatrix( void )
+C Specification
+
+  void glPopMatrix( void )
+Description
+
+  There is a stack of matrices for each of the matrix modes.  In GL_MODELVIEW
+  mode, the stack depth is at least 32.  In the other two modes,
+  GL_PROJECTION and GL_TEXTURE, the depth is at least 2.  The current matrix
+  in any mode is the matrix on the top of the stack for that mode.
+
+  glPushMatrix pushes the current matrix stack down by one, duplicating the
+  current matrix.  That is, after a glPushMatrix call, the matrix on the top
+  of the stack is identical to the one below it.
+
+  glPopMatrix pops the current matrix stack, replacing the current matrix
+  with the one below it on the stack.
+
+  Initially, each of the stacks contains one matrix, an identity matrix.
+
+  It is an error to push a full matrix stack, or to pop a matrix stack that
+  contains only a single matrix.  In either case, the error flag is set and
+  no other change is made to GL state.
+
+glPushName
+
+
+Name
+
+  glPushName, glPopName - push and pop the name stack
+C Specification
+
+  void glPushName( GLuint name )
+Parameters
+
+  name  Specifies a name that will be pushed onto the name stack.
+C Specification
+
+  void glPopName( void )
+Description
+
+  The name stack is used during selection mode to allow sets of rendering
+  commands to be uniquely identified.  It consists of an ordered set of
+  unsigned integers.  glPushName causes name to be pushed onto the name
+  stack, which is initially empty.  glPopName pops one name off the top of
+  the stack.
+
+  It is an error to push a name onto a full stack, or to pop a name off an
+  empty stack.  It is also an error to manipulate the name stack between the
+  execution of glBegin and the corresponding execution of glEnd.  In any of
+  these cases, the error flag is set and no other change is made to GL state.
+
+  The name stack is always empty while the render mode is not GL_SELECT.
+  Calls to glPushName or glPopName while the render mode is not GL_SELECT are
+  ignored.
+ 
+
+
+glRenderMode
+
+
+Name
+
+  glRenderMode - set rasterization mode
+C Specification
+
+  GLint glRenderMode( GLenum mode )
+Parameters
+
+  mode  Specifies the rasterization mode.  Three values are accepted:
+    GL_RENDER, GL_SELECT, and GL_FEEDBACK.  The default value is
+    GL_RENDER.
+Description
+
+  glRenderMode sets the rasterization mode.  It takes one argument, mode,
+  which can assume one of three predefined values:
+
+  GL_RENDER   Render mode. Primitives are rasterized, producing pixel
+          fragments, which are written into the frame buffer.  This
+          is the normal mode and also the default mode.
+
+  GL_SELECT   Selection mode.  No pixel fragments are produced, and no
+          change to the frame buffer contents is made.  Instead, a
+          record of the names of primitives that would have been
+          drawn if the render mode was GL_RENDER is returned in a
+          select buffer, which must be created (see glSelectBuffer)
+          before selection mode is entered.
+
+  The return value of glRenderMode is determined by the render mode at the
+  time glRenderMode is called, rather than by mode.  The values returned for
+  the three render modes are as follows:
+
+  GL_RENDER   Zero.
+
+  GL_SELECT   The number of hit records transferred to the select buffer.
+
+  Refer to the glSelectBuffer and glFeedbackBuffer reference pages for more
+  details concerning selection and feedback operation.
+
+glRotate
+
+
+Name
+
+  glRotated, glRotatef - multiply the current matrix by a rotation matrix
+C Specification
+
+  void glRotated( GLdouble angle,
+          GLdouble x,
+          GLdouble y,
+          GLdouble z )
+  void glRotatef( GLfloat angle,
+          GLfloat x,
+          GLfloat y,
+          GLfloat z )
+Parameters
+
+  angle  Specifies the angle of rotation, in degrees.
+
+  x, y, z
+     Specify the x, y, and z coordinates of a vector, respectively.
+Description
+
+  glRotate computes a matrix that performs a counterclockwise rotation of
+  angle degrees about the vector from the origin through the point (x, y, z).
+
+  The current matrix (see glMatrixMode) is multiplied by this rotation
+  matrix, with the product replacing the current matrix.  That is, if M is
+  the current matrix and R is the translation matrix, then M is replaced with
+  M � R.
+
+  If the matrix mode is either GL_MODELVIEW or GL_PROJECTION, all objects
+  drawn after glRotate is called are rotated.  Use glPushMatrix and
+  glPopMatrix to save and restore the unrotated coordinate system.
+
+glScale
+
+
+Name
+
+  glScaled, glScalef - multiply the current matrix by a general scaling
+  matrix
+C Specification
+
+  void glScaled( GLdouble x,
+         GLdouble y,
+         GLdouble z )
+  void glScalef( GLfloat x,
+         GLfloat y,
+         GLfloat z )
+Parameters
+
+  x, y, z
+     Specify scale factors along the x, y, and z axes, respectively.
+Description
+
+  glScale produces a general scaling along the x, y, and z axes.  The three
+  arguments indicate the desired scale factors along each of the three axes.
+  The resulting matrix is
+
+                  |  x   0   0   0  |
+                  |         |
+                  |  0   y   0   0  |
+                  |         |
+                  |  0   0   z   0  |
+                  |         |
+                  |  0   0   0   1  |
+
+  The current matrix (see glMatrixMode) is multiplied by this scale matrix,
+  with the product replacing the current matrix.  That is, if M is the
+  current matrix and S is the scale matrix, then M is replaced with M � S.
+
+  If the matrix mode is either GL_MODELVIEW or GL_PROJECTION, all objects
+  drawn after glScale is called are scaled.  Use glPushMatrix and glPopMatrix
+  to save and restore the unscaled coordinate system.
+
+glSelectBuffer
+
+
+Name
+
+  glSelectBuffer - establish a buffer for selection mode values
+C Specification
+
+  void glSelectBuffer( GLsizei size,
+               GLuint *buffer )
+Parameters
+
+  size    Specifies the size of buffer.
+
+  buffer  Returns the selection data.
+Description
+
+  glSelectBuffer has two arguments: buffer is a pointer to an array of
+  unsigned integers, and size indicates the size of the array.  buffer
+  returns values from the name stack (see glInitNames, glLoadName,
+  glPushName) when the rendering mode is GL_SELECT (see glRenderMode).
+  glSelectBuffer must be issued before selection mode is enabled, and it must
+  not be issued while the rendering mode is GL_SELECT.
+
+  Selection is used by a programmer to determine which primitives are drawn
+  into some region of a window.  The region is defined by the current
+  modelview and perspective matrices.
+
+  In selection mode, no pixel fragments are produced from rasterization.
+  Instead, if a primitive intersects the clipping volume defined by the
+  viewing frustum and the user-defined clipping planes, this primitive causes
+  a selection hit.  (With polygons, no hit occurs if the polygon is culled.)
+  When a change is made to the name stack, or when glRenderMode is called, a
+  hit record is copied to buffer if any hits have occurred since the last
+  such event (name stack change or glRenderMode call).  The hit record
+  consists of the number of names in the name stack at the time of the event,
+  followed by the minimum and maximum depth values of all vertices that hit
+  since the previous event, followed by the name stack contents, bottom name
+  first.
+
+  Returned depth values are mapped such that the largest unsigned integer
+  value corresponds to window coordinate depth 1.0, and zero corresponds to
+  window coordinate depth 0.0.
+
+  An internal index into buffer is reset to zero whenever selection mode is
+  entered.  Each time a hit record is copied into buffer, the index is
+  incremented to point to the cell just past the end of the block of names -
+  that is, to the next available cell.  If the hit record is larger than the
+  number of remaining locations in buffer, as much data as can fit is copied,
+  and the overflow flag is set.  If the name stack is empty when a hit record
+  is copied, that record consists of zero followed by the minimum and maximum
+  depth values.
+
+  Selection mode is exited by calling glRenderMode with an argument other
+  than GL_SELECT.  Whenever glRenderMode is called while the render mode is
+  GL_SELECT, it returns the number of hit records copied to buffer, resets
+  the overflow flag and the selection buffer pointer, and initializes the
+  name stack to be empty.  If the overflow bit was set when glRenderMode was
+  called, a negative hit record count is returned.
+ 
+
+
+glTranslate
+
+
+Name
+
+  glTranslated, glTranslatef - multiply the current matrix by a translation
+  matrix
+C Specification
+
+  void glTranslated( GLdouble x,
+             GLdouble y,
+             GLdouble z )
+  void glTranslatef( GLfloat x,
+             GLfloat y,
+             GLfloat z )
+Parameters
+
+  x, y, z
+     Specify the x, y, and z coordinates of a translation vector.
+Description
+
+  glTranslate moves the coordinate system origin to the point specified by
+  (x,y,z).  The translation vector is used to compute a 4x4 translation
+  matrix:
+
+                | 1    0    0    x   |
+                |            |
+                | 0    1    0    y   |
+                |            |
+                | 0    0    1    z   |
+                |            |
+                | 0    0    0    1   |
+
+  The current matrix (see glMatrixMode) is multiplied by this translation
+  matrix, with the product replacing the current matrix.  That is, if M is
+  the current matrix and T is the translation matrix, then M is replaced with
+  M � T.
+
+  If the matrix mode is either GL_MODELVIEW or GL_PROJECTION, all objects
+  drawn after glTranslate is called are translated.  Use glPushMatrix and
+  glPopMatrix to save and restore the untranslated coordinate system.
+ 
+
+
+glVertex
+
+
+Name
+
+  glVertex2d, glVertex2f, glVertex2i, glVertex2s, glVertex3d, glVertex3f,
+  glVertex3i, glVertex3s, glVertex4d, glVertex4f, glVertex4i, glVertex4s,
+  glVertex2dv, glVertex2fv, glVertex2iv, glVertex2sv, glVertex3dv,
+  glVertex3fv, glVertex3iv, glVertex3sv, glVertex4dv, glVertex4fv,
+  glVertex4iv, glVertex4sv - specify a vertex
+C Specification
+
+  void glVertex2d( GLdouble x,
+           GLdouble y )
+  void glVertex2f( GLfloat x,
+           GLfloat y )
+  void glVertex2i( GLint x,
+           GLint y )
+  void glVertex2s( GLshort x,
+           GLshort y )
+  void glVertex3d( GLdouble x,
+           GLdouble y,
+           GLdouble z )
+  void glVertex3f( GLfloat x,
+           GLfloat y,
+           GLfloat z )
+  void glVertex3i( GLint x,
+           GLint y,
+           GLint z )
+  void glVertex3s( GLshort x,
+           GLshort y,
+           GLshort z )
+  void glVertex4d( GLdouble x,
+           GLdouble y,
+           GLdouble z,
+           GLdouble w )
+  void glVertex4f( GLfloat x,
+           GLfloat y,
+           GLfloat z,
+           GLfloat w )
+  void glVertex4i( GLint x,
+           GLint y,
+           GLint z,
+           GLint w )
+  void glVertex4s( GLshort x,
+           GLshort y,
+           GLshort z,
+           GLshort w )
+Parameters
+
+  x, y, z, w
+       Specify x, y, z, and w coordinates of a vertex.  Not all
+       parameters are present in all forms of the command.
+C Specification
+
+  void glVertex2dv( const GLdouble *v )
+  void glVertex2fv( const GLfloat *v )
+  void glVertex2iv( const GLint *v )
+  void glVertex2sv( const GLshort *v )
+  void glVertex3dv( const GLdouble *v )
+  void glVertex3fv( const GLfloat *v )
+  void glVertex3iv( const GLint *v )
+  void glVertex3sv( const GLshort *v )
+  void glVertex4dv( const GLdouble *v )
+  void glVertex4fv( const GLfloat *v )
+  void glVertex4iv( const GLint *v )
+  void glVertex4sv( const GLshort *v )
+Parameters
+
+  v    Specifies a pointer to an array of two, three, or four elements.  The
+       elements of a two-element array are x and y; of a three-element array,
+       x, y, and z; and of a four-element array, x, y, z, and w.
+Description
+
+  glVertex commands are used within glBegin/glEnd pairs to specify point,
+  line, and polygon vertices.  The current color, normal, and texture
+  coordinates are associated with the vertex when glVertex is called.
+
+  When only x and y are specified, z defaults to 0.0 and w defaults to 1.0.
+  When x, y, and z are specified, w defaults to 1.0.
+
+glViewport
+
+
+Name
+
+  glViewport - set the viewport
+C Specification
+
+  void glViewport( GLint x,
+           GLint y,
+           GLsizei width,
+           GLsizei height )
+Parameters
+
+  x, y Specify the lower left corner of the viewport rectangle, in pixels.
+       The default is (0,0).
+
+  width, height
+       Specify the width and height, respectively, of the viewport.  When a
+       GL context is first attached to a window, width and height are set to
+       the dimensions of that window.
+Description
+
+  glViewport specifies the affine transformation of x and y from normalized
+  device coordinates to window coordinates.  Let (x  , y  ) be normalized
+                                                   nd   nd
+  device coordinates.  Then the window coordinates x , y ) are computed as
+  follows:                      w   w
+
+                                        width
+                x  = (x  +1)----- + x
+                 w     nd     2  
+
+                                        height
+                y  = (y  +1)------ + y
+                 w     nd      2  
+
+  Viewport width and height are silently clamped to a range that depends on
+  the implementation.  This range is queried by calling glGet with argument
+  GL_MAX_VIEWPORT_DIMS.
+
+gluLookAt
+
+
+Name
+
+  gluLookAt - define a viewing transformation
+C Specification
+
+  void gluLookAt( GLdouble eyex,
+          GLdouble eyey,
+          GLdouble eyez,
+          GLdouble centerx,
+          GLdouble centery,
+          GLdouble centerz,
+          GLdouble upx,
+          GLdouble upy,
+          GLdouble upz )
+Parameters
+
+  eyex, eyey, eyez
+          Specifies the position of the eye point.
+
+  centerx, centery, centerz
+          Specifies the position of the reference point.
+
+  upx, upy, upz   Specifies the direction of the up vector.
+Description
+
+  gluLookAt creates a viewing matrix derived from an eye point, a reference
+  point indicating the center of the scene, and an up vector.  The matrix
+  maps the reference point to the negative z axis and the eye point to the
+  origin, so that, when a typical projection matrix is used, the center of
+  the scene maps to the center of the viewport.  Similarly, the direction
+  described by the up vector projected onto the viewing plane is mapped to
+  the positive y axis so that it points upward in the viewport.  The up
+  vector must not be parallel to the line of sight from the eye to the
+  reference point.
+
+  The matrix generated by gluLookAt postmultiplies the current matrix.
+
+gluPickMatrix
+
+Name
+
+  gluPickMatrix - define a picking region
+C Specification
+
+  void gluPickMatrix( GLdouble x,
+              GLdouble y,
+              GLdouble width,
+              GLdouble height,
+              GLint viewport[4] )
+Parameters
+
+  x, y Specify the center of a picking region in window coordinates.
+
+  width, height
+       Specify the width and height, respectively, of the picking region in
+       window coordinates.
+
+  viewport
+       Specifies the current viewport (as from a glGetIntegerv call).
+Description
+
+  gluPickMatrix creates a projection matrix that can be used to restrict
+  drawing to a small region of the viewport.  This is typically useful to
+  determine what objects are being drawn near the cursor.  Use gluPickMatrix
+  to restrict drawing to a small region around the cursor.  Then, enter
+  selection mode (with glRenderMode and rerender the scene.  All primitives
+  that would have been drawn near the cursor are identified and stored in the
+  selection buffer.
+
+  The matrix created by gluPickMatrix is multiplied by the current matrix
+  just as if glMultMatrix is called with the generated matrix.  To
+  effectively use the generated pick matrix for picking, first call
+  glLoadIdentity to load an identity matrix onto the perspective matrix
+  stack.  Then call gluPickMatrix, and finally, call a command (such as
+  glOrtho) to multiply the perspective matrix by the pick matrix.
+
+  When using gluPickMatrix to pick NURBS, be careful to turn off the NURBS
+  property GLU_AUTO_LOAD_MATRIX.  If GLU_AUTO_LOAD_MATRIX is not turned off,
+  then any NURBS surface rendered is subdivided differently with the pick
+  matrix than the way it was subdivided without the pick matrix.
+Example
+
+  When rendering a scene as follows:
+
+  glMatrixMode(GL_PROJECTION); glLoadIdentity(); glOrtho(...);
+  glMatrixMode(GL_MODELVIEW); /* Draw the scene */
+
+  a portion of the viewport can be selected as a pick region like this:
+
+  glMatrixMode(GL_PROJECTION); glLoadIdentity(); gluPickMatrix(x, y, width,
+  height, viewport); glOrtho(...); glMatrixMode(GL_MODELVIEW); /* Draw
+  the scene */

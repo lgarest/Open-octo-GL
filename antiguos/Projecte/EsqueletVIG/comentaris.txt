@@ -1,0 +1,15 @@
+-Esta implementada la funció opcional per activar 8 llums a la pestanya de llums
+"Altres"
+	- Per moure la llum primer s'ha d'activar la desitjada per primer cop i
+	ja es pot moure amb el petit cub mentre estigui seleccionat.
+	- El color només es pot canviar si s'ha ecollit la llum a la llista
+-Les pestanyes de llums i materials es poden amagar i mostrar prement els botons
+"Amagar Material i Llums" i "Material i Llums" respectivament
+
+-Hi ha un problema amb el material i es que canviant el material d'un objecte
+quan es torna a seleccionar el primer el material canvia peró només del primer
+seleccionat (crec que es perquè els emits per actualitzar les barres del
+material no van).
+
+-Totes les demés funcions estan implementadas tal com s'especificaven als
+enunciats.

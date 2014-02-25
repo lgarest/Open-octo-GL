@@ -1,0 +1,405 @@
+<ui version="4.0" >
+ <class>myForm</class>
+ <widget class="QWidget" name="myForm" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>469</width>
+    <height>402</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_2" >
+   <item row="0" column="0" >
+    <layout class="QHBoxLayout" name="horizontalLayout" >
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout" >
+       <item>
+        <layout class="QGridLayout" name="gridLayout" >
+         <item row="0" column="0" >
+          <widget class="myQPushButton" name="buttonR" >
+           <property name="minimumSize" >
+            <size>
+             <width>100</width>
+             <height>100</height>
+            </size>
+           </property>
+           <property name="styleSheet" >
+            <string notr="true" >background-color: rgb(255, 0, 0);</string>
+           </property>
+           <property name="lletra" stdset="0" >
+            <string>R</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1" >
+          <widget class="myQPushButton" name="buttonG" >
+           <property name="minimumSize" >
+            <size>
+             <width>100</width>
+             <height>100</height>
+            </size>
+           </property>
+           <property name="styleSheet" >
+            <string notr="true" >background-color: rgb(0, 255, 0);</string>
+           </property>
+           <property name="lletra" stdset="0" >
+            <string>G</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1" >
+          <widget class="myQPushButton" name="buttonY" >
+           <property name="minimumSize" >
+            <size>
+             <width>100</width>
+             <height>100</height>
+            </size>
+           </property>
+           <property name="styleSheet" >
+            <string notr="true" >background-color: rgb(255, 255, 0);</string>
+           </property>
+           <property name="lletra" stdset="0" >
+            <string>Y</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0" >
+          <widget class="myQPushButton" name="buttonB" >
+           <property name="minimumSize" >
+            <size>
+             <width>100</width>
+             <height>100</height>
+            </size>
+           </property>
+           <property name="styleSheet" >
+            <string notr="true" >background-color: rgb(0, 0, 255);</string>
+           </property>
+           <property name="lletra" stdset="0" >
+            <string>B</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="verticalSpacer" >
+         <property name="orientation" >
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0" >
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer" >
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0" >
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item rowspan="2" row="0" column="1" >
+    <layout class="QHBoxLayout" name="horizontalLayout_2" >
+     <item>
+      <spacer name="horizontalSpacer_2" >
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0" >
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_3" >
+       <item>
+        <spacer name="verticalSpacer_2" >
+         <property name="orientation" >
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0" >
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_2" >
+         <item>
+          <widget class="QPushButton" name="botoIni" >
+           <property name="text" >
+            <string>&amp;Initialize</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="botoExit" >
+           <property name="text" >
+            <string>&amp;Exit</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="0" >
+    <layout class="QVBoxLayout" name="verticalLayout_4" >
+     <item>
+      <spacer name="verticalSpacer_3" >
+       <property name="orientation" >
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0" >
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_4" >
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_3" >
+         <item>
+          <widget class="QLabel" name="lblSeq" >
+           <property name="text" >
+            <string>Sequence:</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="myQLabel" name="lblBlue" >
+         <property name="minimumSize" >
+          <size>
+           <width>100</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="styleSheet" >
+          <string notr="true" >background-color: rgb(3, 175, 255);</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_3" >
+         <property name="orientation" >
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0" >
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>myQLabel</class>
+   <extends>QLabel</extends>
+   <header>myQLabel.h</header>
+  </customwidget>
+  <customwidget>
+   <class>myQPushButton</class>
+   <extends>QPushButton</extends>
+   <header>myQPushButton.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>botoExit</sender>
+   <signal>clicked()</signal>
+   <receiver>myForm</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>423</x>
+     <y>382</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>438</x>
+     <y>135</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonR</sender>
+   <signal>clicked()</signal>
+   <receiver>buttonR</receiver>
+   <slot>colorBoto()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>35</x>
+     <y>39</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>17</x>
+     <y>55</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonB</sender>
+   <signal>clicked()</signal>
+   <receiver>buttonB</receiver>
+   <slot>colorBoto()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>30</x>
+     <y>156</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>19</x>
+     <y>177</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonY</sender>
+   <signal>clicked()</signal>
+   <receiver>buttonY</receiver>
+   <slot>colorBoto()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>190</x>
+     <y>164</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>214</x>
+     <y>184</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonG</sender>
+   <signal>clicked()</signal>
+   <receiver>buttonG</receiver>
+   <slot>colorBoto()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>198</x>
+     <y>81</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>219</x>
+     <y>62</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonR</sender>
+   <signal>clicked(QString)</signal>
+   <receiver>lblBlue</receiver>
+   <slot>setTextSeguit(QString)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>64</x>
+     <y>89</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>91</x>
+     <y>374</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonB</sender>
+   <signal>clicked(QString)</signal>
+   <receiver>lblBlue</receiver>
+   <slot>setTextSeguit(QString)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>84</x>
+     <y>213</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>98</x>
+     <y>378</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonG</sender>
+   <signal>clicked(QString)</signal>
+   <receiver>lblBlue</receiver>
+   <slot>setTextSeguit(QString)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>172</x>
+     <y>99</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>153</x>
+     <y>386</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonY</sender>
+   <signal>clicked(QString)</signal>
+   <receiver>lblBlue</receiver>
+   <slot>setTextSeguit(QString)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>198</x>
+     <y>204</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>177</x>
+     <y>385</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>botoIni</sender>
+   <signal>clicked()</signal>
+   <receiver>lblBlue</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>383</x>
+     <y>342</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>137</x>
+     <y>376</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

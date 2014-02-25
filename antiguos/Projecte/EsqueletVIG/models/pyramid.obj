@@ -1,0 +1,16 @@
+# Blender3D v249 OBJ File: 
+# www.blender3d.org
+mtllib pyramid.mtl
+o Pyramid_Cube.002
+v 0.500000 -0.500000 -0.500000
+v 0.500000 -0.500000 0.500000
+v -0.500000 -0.500000 0.500000
+v -0.500000 -0.500000 -0.500000
+v -0.000000 0.500000 0.000000
+usemtl Material
+s off
+f 1 2 3 4
+f 1 5 2
+f 2 5 3
+f 3 5 4
+f 5 1 4
